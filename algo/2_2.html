@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+
+
+/*main {
+    margin: 0;
+    padding: 0 24px;
+    padding-right: 20px;
+    line-height: 1.8;
+    width: 100%;
+    max-width: 880px;
+    box-sizing: border-box;
+    color: #263238;
+    background: #fff;
+    font-family: sans-serif;
+}*/
+
+/*グリッド*/
+.cont {
+    display: grid;
+    grid-template-columns: 240px 1fr 240px;
+    background-color: #ffffff;
+}
+
+.area1 {
+    background-color: #ffffff;
+}
+
+.area2 {
+    background-color: #ffffff;
+}
+
+.area3 {
+    background-color: #ffffff;
+}
+
+.area2 main {
+    margin: 20px auto;
+    border-right: 0px;
+    padding: 0 25px;
+    line-height: 1.8;
+    max-width: 780px;
+    box-sizing: border-box;
+    color: #263238;
+    background: #ffffff;
+    font-family: sans-serif;
+}
+
+/*1400px以下になったときの挙動*/
+@media screen and (max-width: 1401px) {
+    .area3 {
+        display: none;
+    }
+
+    .cont {
+        grid-template-columns: 240px minmax(0, 1fr) ;
+    }
+}
+
+h1, h2 {
+    border-bottom: 1px solid #e2e8f0;
+    padding-bottom: 8px;
+}
+pre {
+    padding: 16px;
+    overflow-x: auto;
+    background: #f4f6f8;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    line-height: 1.5;
+}
+
+pre code {
+    font-family: Consolas, monospace;
+    font-size: 14px;
+}
+
+a {color: #3976a8;}
+img {max-width: 100%;}
+
+/*問題の囲い*/
+.problem {
+    position: relative;
+    border: 1px solid #ffffff;
+    background-color: #ffe7e788;
+    border-radius: 8px;
+    padding: 24px 16px 16px;
+    margin: 30px 0;
+}
+
+.problem-title {
+    position: absolute;
+    top: -15px;
+    left: 16px;
+    padding: 0 8px;
+    font-weight: bold;
+    color: #000000;
+    font-size: 20px;
+}
+
+/*右側のインデックスリンク*/
+.toc {
+    position: fixed;
+    top: 30px;
+    right: 30px;
+    width: 180px;
+    padding: 16px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+}
+
+.toc nav {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.toc a {
+    color: #282c30c9;
+    text-decoration: none;
+    font-size: 18px;
+    border-bottom:0.2px solid #00000052;
+}
+
+.toc a:hover {
+    color: #648fec;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* デフォルトでは目次を非表示 */
+.toc {
+display: none;
+}
+/*1400px以上のときの挙動*/
+@media screen and (min-width: 1400px) {
+    .toc {
+        display: block;
+        position: fixed;
+        top: 60px;
+        right: 100px;
+        width: 220px;
+        padding: 16px;
+        background: #f8fafc;
+        border: #ffffff;
+        border-radius: 8px;
+    }
+}
+
+/*左側のリンク欄*/
+.links{
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0px;
+    width: 180px;
+    top: 40px;
+    left: 50px;
+    flex-shrink: 0;
+}
+
+.links a {
+    display: block;
+    padding: 7px 10px;
+    margin-bottom: 4px;
+    color: #333333;
+    text-decoration: none;
+    border-radius: 0px;
+    border-bottom: 0.2px solid #00000052;
+}
+
+.links a:hover{
+    color: #3976a8;
+}
+
+@media screen and (max-width: 671px) {
+    .area1 {
+        display: none;
+    }
+    .links{
+        display: none;
+    }
+    .cont {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: .01ms !important; }
+}
+    </style>
+</head>
+
+<subindex>
+<aside class="toc">
+    <nav>
+    <a href="#anchor1">硬貨の問題</a>
+    <a href="#anchor2">区間の問題</a>
+    <a href="#anchor3">辞書順最小の問題</a>
+    <a href="#anchor4">Saruman's Army</a>
+    <a href="#anchor5">Fence Repair</a>
+    </nav>
+</aside>
+</subindex>
+
+<leftlinks>
+<aside class = "links">
+    <h3>リンク</h3>
+    <a href="/index.html">ホーム</a>
+    <a href="/algo/2_1.html">2-1:全探索</a>
+    <a href="/algo/2_2.html">2-2:貪欲法</a>
+</aside>
+</leftlinks>
+
+<div class = "cont"> 
+    <div class = "area1"></div>
+    <div class = "area2">
+    <main>
+    <h1>貪欲法</h1>
+    
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <p>貪欲法とは1つのルールに則って貪欲的にその場での最善を選択することを繰り返すというアルゴリズム設計法<br />
+    ここではいくつかの典型的な貪欲法の問題を見ていく．</p>
+    <h1>目次</h1>
+    <ol>
+    <li><a href="#anchor1">硬貨の問題</a></li>
+    <li><a href="#anchor2">区間の問題</a></li>
+    <li><a href="#anchor3">辞書順最小の問題</a></li>
+    <li><a href="#anchor4">Saruman's Army</a></li>
+    <li><a href="#anchor5">Fence Repair</a></li>
+    </ol>
+
+    <a id = "anchor1"></a>
+
+    <div class="problem">
+        <span class="problem-title">硬貨の問題</span>
+    <p>1円玉，5円玉，10円玉，50円玉，100円玉，500円玉が，それぞれ\(C_1,C_5,C_{10},C_{50},C_{100},C_{500}\)枚ずつある．できるだけ少ない枚数の硬貨でA円を支払う．何枚の硬貨が必要か求めなさい．ただし，硬貨の求め方は少なくとも1つ存在するとする．
+    </div>
+    <p>直観通り，金額の高い硬貨からできるだけ多く使っていくことで解ける．
+    貪欲法のアルゴリズムは基本的に高速であり，性能が高いものが多い．
+    ナップサック問題の一種と考えることもでき，また，動的計画法により解くこともできるが，貪欲法のほうがシンプルに解決できる．</p>
+    <pre><code>
+    const int v[6] = {1, 5, 10, 50, 100, 500};
+
+    int c[6];
+    int a;
+    for(int i = 0; i < 6; i++){
+        cin >> c[i];
+    }
+    cin >> a;
+
+    int ans = 0;
+    for(int i = 5; i >= 0; i--){
+        int t = min(a/v[i], c[i]);
+        a -= t * v[i];
+        ans += t;
+    }
+    cout << ans << "\n";
+    </code></pre>
+    <a href="https://github.com/k50538471-prog/kyopro/blob/f213c5c5f941704fa4703143540f792abb4ab515/%E3%82%A2%E3%83%AA%E6%9C%AC/%E8%B2%AA%E6%AC%B2%E6%B3%95/ex1ans.cpp">解答例</a>
+
+    <a id = "anchor2"></a>
+
+    <div class="problem">
+        <span class="problem-title">区間の問題</span>
+    <p>n個の仕事がある．各仕事は時間\(s_i\),に始まり，時間\(t_i\),に終わります．あなたは各仕事について参加するかしないかを選ばなければならない．仕事に参加するならば，その仕事の始めから終わりまで参加しなければならない．また，参加する仕事の時間帯が重なってはいけない．最大何個の仕事に参加できるか求めなさい．<br />
+    制約：\(1 \leq n \leq 10^5, ~ 1 \leq s_i < t_i \leq 10^9\)</p>
+    </div>
+    <p>この問題も貪欲法により解ける．しかし，貪欲法にも様々な方法がある．例えば，選べる仕事のうち，最も開始時間の早いものを選ぶ方法がある．<br />
+    しかし，必ずしもうまくいくわけではない．他にも
+    1. 選べる仕事のうち，終了時間が最も早いものを選ぶ．
+    1. 選べる仕事のうち，時間が最も短いものを選ぶことを繰り返す．
+    1. 選べる仕事のうち，その仕事を選んだ時に選べなくなるほかの仕事の数が最も少ないものを選ぶ．</p>
+    <p>正しいものは，１番目のアルゴリズムであり，2,3番目にはそれぞれ反例が存在する．</p>
+    <pre><code>
+    const int max_n = 100000;
+
+    int n;
+    cin >> n;
+    pair<int, int> work[max_n];
+
+    //pairは辞書順で比較される
+    //終了時間の早い順にするため，tをfirstに,sをsecondに置く
+    for(int i = 0; i < n; i++){
+        cin >> work[i].second >> work[i].first;
+    }
+    sort(work.begin(), work.end());
+    int ans = 0;
+    //tは最後に選んだ仕事の終了時間
+    for(int i = 0; i < n; i++){
+        //最後に選んだ仕事と次の仕事の開始時間がかぶってはダメなため
+        if( t < work[i].second ){
+            ans++;
+            t = work[i].first;
+        }
+    }
+    cout << ans << "\n";
+    </code></pre>
+    <a href="https://github.com/k50538471-prog/kyopro/blob/d7e4e6723545d85671ea22f516518b614c908b8d/%E3%82%A2%E3%83%AA%E6%9C%AC/%E8%B2%AA%E6%AC%B2%E6%B3%95/ex2ans.cpp">解答例</a>
+    <p>このアルゴリズムが正しいことの証明は，
+    他の任にの選び方に対し，このアルゴリズムの選び方は，開始時間が早いものから同じ個数のところで，終了時間が遅くない．そのため，多く選べる選び方は存在しない．</p>
+
+    <a id = "anchor3"></a>
+
+    <div class="problem">
+        <span class="problem-title">辞書順最小の問題</span>
+    <p>n文字の文字列sが与えられ，n文字の文字列tを作る．初めは，tは長さ0の文字列で，次のいずれかの操作が行える．</p>
+    <ul>
+    <li>sの先頭を1文字消去し，tの末尾に追加する</li>
+    <li>sの末尾を1文字消去し，tの末尾に追加する </li>
+    </ul>
+    <p>tが辞書順比較でできるだけ小さくなるようにtを作りなさい.</p>
+    <p>制約：\(1 \leq n \leq 2000 \)文字列\(s\)に含まれるのはローマ字の大文字のみ．</p>
+    </div>
+    <ul>
+    <li>sの先頭と末尾のうち，辞書順で早いほうをtの末尾に追加していくことを繰り返す．  </li>
+    </ul>
+    <p>しかし，sの先頭と末尾の文字が同じ場合が定義されていない．さらにその場合，その文字の後にできるだけよい（早い）文字を使いたいため，次の文字も比較する必要がある．よって次のようにする</p>
+    <ul>
+    <li>sとsを反転させた文字列s'を辞書順比較する．</li>
+    <li>が小さい場合，sの先頭を1文字消去し，tの末尾に追加</li>
+    <li>s'が小さい場合，同上</li>
+    </ul>
+    <p>辞書順比較は基本的に貪欲法が有効</p>
+    <pre><code>
+    int n;
+    string s;
+    string t = "";
+    cin >> n >> s;
+    //s'を作らなくてもいい
+    int a = 0, b = n - 1;
+    while( a <= b ){
+        //左から見た場合と右から見た場合を比較
+        bool left = false;
+        for(int i = 0; i < a + 1; i++){
+            if(s[a + i] < s[b - i]){
+                left = ture;
+                break;
+            esle if(s[a + i] > s[b - i]){
+                left = false;
+                break;
+            }
+            }
+        }
+        if(left) t.push_back(s[a++]);
+        else t.push_back(s[b--]); 
+    }
+    cout << t << "\n";
+    </code></pre>
+    <a href="">解答例</a>
+
+    <p><a id = "anchor4" ></a></p>
+
+    <div class="problem">
+        <span class="problem-title">Saruman's Army</span>
+    <p>Nこの点が直線上にある．点iの位置は$X_i$である．N個のうちいくつかの点を選び，それらの点にしるしをつける．N個すべての点について，距離がR以内の場所に印をつけられた点がなければならない．（自分の場所に印がついている場合は，距離を0として考える．）条件を満たすようにしながらできるだけ印をつける点を少なくしたい．何個の点に印をつける必要があるか．<br />
+    制約：\(1\leq N \leq 1000,~ 0 \leq R \leq 1000,~ 0\leq X_i \leq 1000\)</p>
+    </div>
+    <p>方針：<br />
+    左から考えていく．一番左の点について，その点から距離R以内のところに印のついて点がなければならない．<br/>
+    そして，その点は一番左の点から距離R以内の点で最も遠いものでないといけない．このようにして印をつける点を選べば，あとは，印をつけた点から右にR以上離れている最初の点について繰り返すだけでよい．すべての点をカバーすれば終わる．
+    <pre><code>
+    int n,r;
+    int x[1000];
+
+    sort(x.begin(), x.end());
+    int i = 0, ans = 0;
+    while(i < n){
+        //s：カバーされていない一番左の点
+        s = x[i];
+        //sから距離Rを超える点まで進む
+        while(i < n && x[i] < = s + r)i++;
+        //p：新しく印をつける点の位置
+        int p = x[i - 1];
+        ans++;
+        //pから距離rを超える点まで進む
+        while(i < n && x[i] < = p + r)i++;
+    }
+    cout << ans << "\n";
+    </code></pre>
+
+    <a href="">解答例</a>
+
+    <p><a id = "anchor5" ></a></p>
+
+    <div class = "problem">
+        <span class = "problem-title">Fence Repair</span>
+    <p>とても長い板からN個の板を切り出そうとしている．切り出そうとしている板の長さは\(L_1,L_2,\dots ,L_N\)であり，元の板の長さからちょうどこれの合計になっている（つまり，\(\Sigma_{i=0}^{N} L_i = 一定\)）板を切断する際には，その板の長さの分だけのコストがかかる．最小のコストを求めよ．<br />
+    制約：\(1\leq N\leq 20000,~ 1\leq L_i\leq 20000(i = 1,2,\dots,N)\)</p>
+    </div>
+    <p>方針：<br />
+    順番などがなく自由度が高い問題でとっかかりがつかみにくい問題となっている．しかし，特殊な貪欲法により解くことが出来る．まず．切り出し方は二分木に対応している．
+    今回は，葉の節点が切り出された板1つ1つに対応している．また，葉の節点の深さは，その部分が切断に関わった回数に等しいため，コストの合計は各葉の節点の
+    <blockquote>板の長さ×節点の深さ</blockquote>
+    の和に対応している．ここで，次のような性質がいえる．一番短い節点とその次に短い節点は兄弟としてよい．最適解において，一番短い節点は，最も深い葉の1つであるはずである．そして，その葉にはそな字深さの兄弟が存在するはずである．それは同様に最も深い葉であるため，そこを次に短い節点とする．<br />
+    \(L_i\)が小さい順にソートされているとする．この時，一番短い板の長さは\(L_1\)次は\(L_2\)であり，これらが兄弟であったということは，これらは長さ\((L_1 + L_2)\)の板から切断されたということになる．切断の順番は自由なので，これが最後の切断とする．すると，この切断の前は\((L_1 + L_2),L_3,\dots,L_N\)のN-1本の板になっている<br/>
+    同様のことを繰り返して再帰的にこのN-1本の問題とすると解が求まる．つまりは逆の作業をするわけである．これを実直に実装すると\(O(N^2)\)となるがこの問題の場合は制限内に溶ける．しかし，\(O(Nlog~N)\)で解くこともできる．これは2-4で扱う．
+    <pre><code>
+    using ll = long long;
+
+    int n,l[20000];
+
+    ll ans = 0;
+    //いたが1本になるまで
+    while(n > 1){
+        //一番短い板min1,min2を求める．
+        //sortじゃなくてした2つを探してくる．
+        int min1 = 0,min2 = 1;
+        if(l[min1] > l[min2])swap(min1,min2);
+        for(int i = 2; i < n; i++){
+            if(l[i] < l[min1]){
+                min2 = min1;
+                min1 = i;
+            }
+            else if(l[i] < l[min2])min2 = i;
+        }
+
+    //min1,min2番目の板を結合
+    int t = l[min1] + l[min2];
+    ans += t;
+
+    if(min1 == n - 1)swap(min1, min2);
+    //min1,min2番目の数は用済みなので有効利用
+    //min1番目は，結合した値に
+    //min2番目は，一番最後の値をコピー．これにより探索範囲をn-1にできる．
+    l[min1] = t;
+    l[min2] = l[n - 1];
+    n--;
+    }
+    cout << ans << "\n";
+    </pre></code>
+    <a href="">解答例</a>
+    </main>
+    </div>
+    <div class = "area3"></div>
+</div>

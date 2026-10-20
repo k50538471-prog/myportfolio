@@ -3,20 +3,20 @@
  * PDF.jsを読み込む
  * PDFファイルを読み込んだり、ページを描画したりするためのライブラリ
  */
-import * as pdfjsLib from "/pdfjs/build/pdf.mjs";
+import * as pdfjsLib from "../pdfjs/pdfjs-6.4.299-dist/build/pdf.mjs";
 
 /*
  * PDF.jsが内部で使用するWeb Workerの場所を指定する
  * Workerは、メインの処理とは別にPDFの解析などを行う仕組み
  */
 pdfjsLib.GlobalWorkerOptions.workerSrc =
-    "/pdfjs/build/pdf.worker.mjs";
+    "../pdfjs/pdfjs-6.4.299-dist/build/pdf.worker.mjs";
 
 /*
  * 表示するPDFファイルのURL
  * ここでは /pdf/linear-algebra.pdf を読み込む
  */
-const url = "/math/9_29.pdf";
+const url = "../math/9_29.pdf";
 
 /*
  * HTMLから、PDFを表示するための要素を取得する
@@ -29,7 +29,11 @@ const container = document.getElementById("pdf-container");
  * getDocument(url) で読み込み処理を開始し、
  * promiseによって読み込み完了後にPDFの情報を取得する
  */
-const pdf = await pdfjsLib.getDocument(url).promise;
+console.log("PDF URL:", url);
+console.log("getDocument:", pdfjsLib.getDocument);
+
+const pdf = await pdfjsLib.getDocument({ url }).promise;
+/*const pdf = await pdfjsLib.getDocument(url).promise;*/
 
 /*
  * PDFの1ページ目から最終ページまで順番に処理する

@@ -9,8 +9,37 @@ body{
   border: 1px solid #000;
   padding: 0.6em 0.8em;
   margin: 1em 0;
+  overflow-wrap: anywhere;
 }
 math.ltx_Math {
   margin-left: 0.4em;
   margin-right: 0.2em;
+}
+/* 数式を含む段落が横にはみ出すのを防ぐ */
+.ltx_para {
+    min-width: 0;
+    max-width: 100%;
+}
+
+/* インライン数式の横幅を制限 */
+math.ltx_Math,
+math.ltx_math_unparsed {
+    max-width: 100%;
+}
+
+/* 独立した数式が長い場合は横スクロール */
+.ltx_equation,
+.ltx_equationgroup {
+    max-width: 100%;
+    overflow-x: auto;
+}
+
+@media (max-width: 680px) {
+    math.ltx_Math,
+    math.ltx_math_unparsed {
+        font-size: 1em;
+    }
+    body{
+      font-size: 0.6em;
+    }
 }

@@ -1,0 +1,331 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>§1 ベクトル空間と部分空間</title>
+<!--Generated on Thu Oct 22 22:00:15 2026 by LaTeXML (version 0.8.8) http://dlmf.nist.gov/LaTeXML/.-->
+
+<link rel="stylesheet" href="LaTeXML.css" type="text/css">
+<link rel="stylesheet" href="ltx-article.css" type="text/css">
+<link rel="stylesheet" href="ltx-listings.css" type="text/css">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body>
+<div class="ltx_page_main">
+<div class="ltx_page_content">
+<article class="ltx_document">
+<section id="S1" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">§1 </span>ベクトル空間と部分空間</h2>
+
+<div id="S1.p1" class="ltx_para">
+<p class="ltx_p">本題に入る前に一つだけ集合を定義する
+<br class="ltx_break">集合Kを<span class="ltx_text ltx_font_blackboard">ℝ</span>または<span class="ltx_text ltx_font_blackboard">ℂ</span>とする．</p>
+</div>
+<section id="S1.SS1" class="ltx_subsection">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">A) </span>ベクトル空間</h3>
+
+<div id="S1.Thmdefin1" class="ltx_theorem ltx_theorem_defin">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">def 1.1</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S1.Thmdefin1.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">ベクトル空間
+<br class="ltx_break">集合<math id="S1.Thmdefin1.p1.m1" class="ltx_Math" alttext="V(\neq\varnothing)" display="inline"><mrow><mi>V</mi><mspace width="0.3888888888888889em"></mspace><mrow><mo stretchy="false">(</mo><mrow><mi></mi><mo>≠</mo><mi mathvariant="normal">∅</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></math>に<math id="S1.Thmdefin1.p1.m2" class="ltx_Math" alttext="2" display="inline"><mn>2</mn></math>つの演算
+<br class="ltx_break"></span></p>
+<table id="S1.EGx1" class="ltx_equationgroup ltx_eqn_align ltx_eqn_table">
+
+<tbody id="S1.Ex1"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="S1.Ex1.m1" class="ltx_math_unparsed" alttext="\displaystyle+:V\times V\rightarrow V(\bm{x}\bm{y})\rightarrow\bm{x}\bm{y}" display="inline"><mrow><mo rspace="0em">+</mo><mo rspace="0.278em">:</mo><mi>V</mi><mo lspace="0.222em" rspace="0.222em">×</mo><mi>V</mi><mo stretchy="false">→</mo><mi>V</mi><mrow><mo stretchy="false">(</mo><mi>𝒙</mi><mi>𝒚</mi><mo stretchy="false">)</mo></mrow><mo stretchy="false">→</mo><mi>𝒙</mi><mi>𝒚</mi></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="S1.Ex2"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="S1.Ex2.m1" class="ltx_math_unparsed" alttext="\displaystyle\cdot:K\times V\rightarrow V(\lambda\bm{y})\rightarrow\lambda\bm{x}" display="inline"><mrow><mo rspace="0em">⋅</mo><mo rspace="0.278em">:</mo><mi>K</mi><mo lspace="0.222em" rspace="0.222em">×</mo><mi>V</mi><mo stretchy="false">→</mo><mi>V</mi><mrow><mo stretchy="false">(</mo><mi>λ</mi><mi>𝒚</mi><mo stretchy="false">)</mo></mrow><mo stretchy="false">→</mo><mi>λ</mi><mi>𝒙</mi></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">が定義され，以下の8つの公理を満たす<math id="S1.Thmdefin1.p1.m3" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math>を<math id="S1.Thmdefin1.p1.m4" class="ltx_Math" alttext="K" display="inline"><mi>K</mi></math>上ベクトル空間（<math id="S1.Thmdefin1.p1.m5" class="ltx_Math" alttext="K-" display="inline"><mrow><mi>K</mi><mo>−</mo></mrow></math>ベクトル空間）と呼ぶ．</span></p>
+<ol id="S1.I1" class="ltx_enumerate">
+<li id="S1.I1.ix1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item"><math id="S1.I1.ix1.m1" class="ltx_Math" alttext="(VS\mathrm{i})" display="inline"><mrow><mo stretchy="false">(</mo><mrow><mi>V</mi><mo>⁢</mo><mi>S</mi><mo>⁢</mo><mi mathvariant="normal">i</mi></mrow><mo stretchy="false">)</mo></mrow></math></span> 
+<div id="S1.I1.ix1.p1" class="ltx_para">
+<p class="ltx_p"><math id="S1.I1.ix1.p1.m1" class="ltx_Math" alttext="\forall\bm{x}\bm{y}\bm{z}\in V" display="inline"><mrow><mrow><mo rspace="0.167em">∀</mo><mrow><mi>𝒙</mi><mo>⁢</mo><mi>𝒚</mi><mo>⁢</mo><mi>𝒛</mi></mrow></mrow><mo>∈</mo><mi>V</mi></mrow></math><span class="ltx_text ltx_font_italic">に対し，</span><math id="S1.I1.ix1.p1.m2" class="ltx_Math" alttext="(\bm{x}\bm{y})\bm{z}=\bm{x}+(\bm{y}\bm{z})" display="inline"><mrow><mrow><mrow><mo stretchy="false">(</mo><mrow><mi>𝒙</mi><mo>⁢</mo><mi>𝒚</mi></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mi>𝒛</mi></mrow><mo>=</mo><mrow><mi>𝒙</mi><mo>+</mo><mrow><mo stretchy="false">(</mo><mrow><mi>𝒚</mi><mo>⁢</mo><mi>𝒛</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math><span class="ltx_text ltx_font_italic"></span></p>
+</div>
+</li>
+<li id="S1.I1.ix2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item"><math id="S1.I1.ix2.m1" class="ltx_Math" alttext="(VS\mathrm{ii})" display="inline"><mrow><mo stretchy="false">(</mo><mrow><mi>V</mi><mo>⁢</mo><mi>S</mi><mo>⁢</mo><mi>ii</mi></mrow><mo stretchy="false">)</mo></mrow></math></span> 
+<div id="S1.I1.ix2.p1" class="ltx_para">
+<p class="ltx_p"><math id="S1.I1.ix2.p1.m1" class="ltx_Math" alttext="\forall\bm{x}\bm{y}\in V" display="inline"><mrow><mrow><mo rspace="0.167em">∀</mo><mrow><mi>𝒙</mi><mo>⁢</mo><mi>𝒚</mi></mrow></mrow><mo>∈</mo><mi>V</mi></mrow></math><span class="ltx_text ltx_font_italic">に対し， </span><math id="S1.I1.ix2.p1.m2" class="ltx_Math" alttext="\bm{x}+\bm{y}=\bm{y}+\bm{x}" display="inline"><mrow><mrow><mi>𝒙</mi><mo>+</mo><mi>𝒚</mi></mrow><mo>=</mo><mrow><mi>𝒚</mi><mo>+</mo><mi>𝒙</mi></mrow></mrow></math><span class="ltx_text ltx_font_italic"></span></p>
+</div>
+</li>
+<li id="S1.I1.ix3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item"><math id="S1.I1.ix3.m1" class="ltx_Math" alttext="(VS\mathrm{iii})" display="inline"><mrow><mo stretchy="false">(</mo><mrow><mi>V</mi><mo>⁢</mo><mi>S</mi><mo>⁢</mo><mi>iii</mi></mrow><mo stretchy="false">)</mo></mrow></math></span> 
+<div id="S1.I1.ix3.p1" class="ltx_para">
+<p class="ltx_p"><math id="S1.I1.ix3.p1.m1" class="ltx_Math" alttext="\exists\mathbb{0}\in V\forall\bm{x}\in V" display="inline"><mrow><mrow><mo rspace="0.167em">∃</mo><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">𝟘</mi></mrow><mo>∈</mo><mrow><mi>V</mi><mo lspace="0.167em">⁢</mo><mrow><mo rspace="0.167em">∀</mo><mi>𝒙</mi></mrow></mrow><mo>∈</mo><mi>V</mi></mrow></math><span class="ltx_text ltx_font_italic">に対し，</span><math id="S1.I1.ix3.p1.m2" class="ltx_Math" alttext="\bm{x}+\mathbb{0}=\mathbb{0}+\bm{x}=\bm{x}" display="inline"><mrow><mrow><mi>𝒙</mi><mo>+</mo><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">𝟘</mi></mrow><mo>=</mo><mrow><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">𝟘</mi><mo>+</mo><mi>𝒙</mi></mrow><mo>=</mo><mi>𝒙</mi></mrow></math><span class="ltx_text ltx_font_italic"></span></p>
+</div>
+</li>
+<li id="S1.I1.ix4" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item"><math id="S1.I1.ix4.m1" class="ltx_Math" alttext="(VS\mathrm{iv})" display="inline"><mrow><mo stretchy="false">(</mo><mrow><mi>V</mi><mo>⁢</mo><mi>S</mi><mo>⁢</mo><mi>iv</mi></mrow><mo stretchy="false">)</mo></mrow></math></span> 
+<div id="S1.I1.ix4.p1" class="ltx_para">
+<p class="ltx_p"><math id="S1.I1.ix4.p1.m1" class="ltx_Math" alttext="\forall\bm{x}\in V\exists\bm{x}^{\prime}\in Vs.t.~{}\bm{x}+\bm{x}^{\prime}=\bm%
+{x}^{\prime}+\bm{x}=\mathbb{0}" display="inline"><mrow><mrow><mrow><mo rspace="0.167em">∀</mo><mi>𝒙</mi></mrow><mo>∈</mo><mrow><mi>V</mi><mo lspace="0.167em">⁢</mo><mrow><mo rspace="0.167em">∃</mo><msup><mi>𝒙</mi><mo>′</mo></msup></mrow></mrow><mo>∈</mo><mrow><mi>V</mi><mo>⁢</mo><mi>s</mi></mrow></mrow><mo lspace="0em" rspace="0.167em">.</mo><mi>t</mi><mo lspace="0em" rspace="0.497em">.</mo><mrow><mrow><mi>𝒙</mi><mo>+</mo><msup><mi>𝒙</mi><mo>′</mo></msup></mrow><mo>=</mo><mrow><msup><mi>𝒙</mi><mo>′</mo></msup><mo>+</mo><mi>𝒙</mi></mrow><mo>=</mo><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">𝟘</mi></mrow></mrow></math><span class="ltx_text ltx_font_italic"></span></p>
+</div>
+</li>
+<li id="S1.I1.ix5" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item"><math id="S1.I1.ix5.m1" class="ltx_Math" alttext="(VS\mathrm{v})" display="inline"><mrow><mo stretchy="false">(</mo><mrow><mi>V</mi><mo>⁢</mo><mi>S</mi><mo>⁢</mo><mi mathvariant="normal">v</mi></mrow><mo stretchy="false">)</mo></mrow></math></span> 
+<div id="S1.I1.ix5.p1" class="ltx_para">
+<p class="ltx_p"><math id="S1.I1.ix5.p1.m1" class="ltx_Math" alttext="\forall\lambda\in K\forall\bm{x}\bm{y}\in V" display="inline"><mrow><mrow><mo rspace="0.167em">∀</mo><mi>λ</mi></mrow><mo>∈</mo><mrow><mi>K</mi><mo lspace="0.167em">⁢</mo><mrow><mo rspace="0.167em">∀</mo><mrow><mi>𝒙</mi><mo>⁢</mo><mi>𝒚</mi></mrow></mrow></mrow><mo>∈</mo><mi>V</mi></mrow></math><span class="ltx_text ltx_font_italic">に対し，</span><math id="S1.I1.ix5.p1.m2" class="ltx_Math" alttext="\lambda(\bm{x}\bm{y})=\lambda\bm{x}+\lambda\bm{y}" display="inline"><mrow><mrow><mi>λ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>𝒙</mi><mo>⁢</mo><mi>𝒚</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mrow><mi>λ</mi><mo>⁢</mo><mi>𝒙</mi></mrow><mo>+</mo><mrow><mi>λ</mi><mo>⁢</mo><mi>𝒚</mi></mrow></mrow></mrow></math><span class="ltx_text ltx_font_italic"></span></p>
+</div>
+</li>
+<li id="S1.I1.ix6" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item"><math id="S1.I1.ix6.m1" class="ltx_Math" alttext="(VS\mathrm{vi})" display="inline"><mrow><mo stretchy="false">(</mo><mrow><mi>V</mi><mo>⁢</mo><mi>S</mi><mo>⁢</mo><mi>vi</mi></mrow><mo stretchy="false">)</mo></mrow></math></span> 
+<div id="S1.I1.ix6.p1" class="ltx_para">
+<p class="ltx_p"><math id="S1.I1.ix6.p1.m1" class="ltx_Math" alttext="\forall\lambda,\mu\forall\bm{x}\in V" display="inline"><mrow><mrow><mrow><mo rspace="0.167em">∀</mo><mi>λ</mi></mrow><mo>,</mo><mrow><mi>μ</mi><mo lspace="0.167em">⁢</mo><mrow><mo rspace="0.167em">∀</mo><mi>𝒙</mi></mrow></mrow></mrow><mo>∈</mo><mi>V</mi></mrow></math><span class="ltx_text ltx_font_italic">に対し，</span><math id="S1.I1.ix6.p1.m2" class="ltx_Math" alttext="(\lambda+\mu)\bm{x}=\lambda\bm{x}+\mu\bm{x}" display="inline"><mrow><mrow><mrow><mo stretchy="false">(</mo><mrow><mi>λ</mi><mo>+</mo><mi>μ</mi></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mi>𝒙</mi></mrow><mo>=</mo><mrow><mrow><mi>λ</mi><mo>⁢</mo><mi>𝒙</mi></mrow><mo>+</mo><mrow><mi>μ</mi><mo>⁢</mo><mi>𝒙</mi></mrow></mrow></mrow></math><span class="ltx_text ltx_font_italic"></span></p>
+</div>
+</li>
+<li id="S1.I1.ix7" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item"><math id="S1.I1.ix7.m1" class="ltx_Math" alttext="(VS\mathrm{vii})" display="inline"><mrow><mo stretchy="false">(</mo><mrow><mi>V</mi><mo>⁢</mo><mi>S</mi><mo>⁢</mo><mi>vii</mi></mrow><mo stretchy="false">)</mo></mrow></math></span> 
+<div id="S1.I1.ix7.p1" class="ltx_para">
+<p class="ltx_p"><math id="S1.I1.ix7.p1.m1" class="ltx_Math" alttext="\forall\lambda,\mu\forall\bm{x}\in V" display="inline"><mrow><mrow><mrow><mo rspace="0.167em">∀</mo><mi>λ</mi></mrow><mo>,</mo><mrow><mi>μ</mi><mo lspace="0.167em">⁢</mo><mrow><mo rspace="0.167em">∀</mo><mi>𝒙</mi></mrow></mrow></mrow><mo>∈</mo><mi>V</mi></mrow></math><span class="ltx_text ltx_font_italic">に対し，</span><math id="S1.I1.ix7.p1.m2" class="ltx_Math" alttext="\lambda(\mu\bm{x})=(\lambda\mu)\bm{x}" display="inline"><mrow><mrow><mi>λ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>μ</mi><mo>⁢</mo><mi>𝒙</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><mi>λ</mi><mo>⁢</mo><mi>μ</mi></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mi>𝒙</mi></mrow></mrow></math><span class="ltx_text ltx_font_italic"></span></p>
+</div>
+</li>
+<li id="S1.I1.ix8" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item"><math id="S1.I1.ix8.m1" class="ltx_Math" alttext="(VS\mathrm{viii})" display="inline"><mrow><mo stretchy="false">(</mo><mrow><mi>V</mi><mo>⁢</mo><mi>S</mi><mo>⁢</mo><mi>viii</mi></mrow><mo stretchy="false">)</mo></mrow></math></span> 
+<div id="S1.I1.ix8.p1" class="ltx_para">
+<p class="ltx_p"><math id="S1.I1.ix8.p1.m1" class="ltx_Math" alttext="\forall\bm{x}\in V" display="inline"><mrow><mrow><mo rspace="0.167em">∀</mo><mi>𝒙</mi></mrow><mo>∈</mo><mi>V</mi></mrow></math><span class="ltx_text ltx_font_italic">に対し，</span><math id="S1.I1.ix8.p1.m2" class="ltx_Math" alttext="1\cdot\bm{x}=\bm{x}" display="inline"><mrow><mrow><mn>1</mn><mo lspace="0.222em" rspace="0.222em">⋅</mo><mi>𝒙</mi></mrow><mo>=</mo><mi>𝒙</mi></mrow></math><span class="ltx_text ltx_font_italic"></span></p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div id="S1.SS1.p1" class="ltx_para">
+<p class="ltx_p">以降この公理に則って議論することが多いためこの8つの条件を記憶することが推奨される．
+<br class="ltx_break"></p>
+</div>
+<div id="S1.Thmdefin2" class="ltx_theorem ltx_theorem_pro">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">prop 1.2</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S1.Thmdefin2.p1" class="ltx_para">
+<p class="ltx_p"><math id="S1.Thmdefin2.p1.m1" class="ltx_Math" alttext="V:K-" display="inline"><mrow><mi>V</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>K</mi><mo>−</mo></mrow></mrow></math><span class="ltx_text ltx_font_italic">ベクトル空間
+<br class="ltx_break"></span></p>
+<ol id="S1.I2" class="ltx_enumerate">
+<li id="S1.I2.ix1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item"><math id="S1.I2.ix1.m1" class="ltx_Math" alttext="(1)" display="inline"><mrow><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></math></span> 
+<div id="S1.I2.ix1.p1" class="ltx_para">
+<p class="ltx_p"><math id="S1.I2.ix1.p1.m1" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math><span class="ltx_text ltx_font_italic">のゼロベクトルは一意に存在する．</span></p>
+</div>
+</li>
+<li id="S1.I2.ix2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item"><math id="S1.I2.ix2.m1" class="ltx_Math" alttext="(2)" display="inline"><mrow><mo stretchy="false">(</mo><mn>2</mn><mo stretchy="false">)</mo></mrow></math></span> 
+<div id="S1.I2.ix2.p1" class="ltx_para">
+<p class="ltx_p"><math id="S1.I2.ix2.p1.m1" class="ltx_Math" alttext="\forall\bm{x}\in V" display="inline"><mrow><mrow><mo rspace="0.167em">∀</mo><mi>𝒙</mi></mrow><mo>∈</mo><mi>V</mi></mrow></math><span class="ltx_text ltx_font_italic">に対して，その逆ベクトルは一意に定まる．</span></p>
+</div>
+</li>
+<li id="S1.I2.ix3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item"><math id="S1.I2.ix3.m1" class="ltx_Math" alttext="(3)" display="inline"><mrow><mo stretchy="false">(</mo><mn>3</mn><mo stretchy="false">)</mo></mrow></math></span> 
+<div id="S1.I2.ix3.p1" class="ltx_para">
+<p class="ltx_p"><math id="S1.I2.ix3.p1.m1" class="ltx_Math" alttext="\forall\bm{x}\in V" display="inline"><mrow><mrow><mo rspace="0.167em">∀</mo><mi>𝒙</mi></mrow><mo>∈</mo><mi>V</mi></mrow></math><span class="ltx_text ltx_font_italic">に対して，</span><math id="S1.I2.ix3.p1.m2" class="ltx_Math" alttext="\mathbb{0}\cdot\bm{x}=\mathbb{0}" display="inline"><mrow><mrow><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">𝟘</mi><mo lspace="0.222em" rspace="0.222em">⋅</mo><mi>𝒙</mi></mrow><mo>=</mo><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">𝟘</mi></mrow></math><span class="ltx_text ltx_font_italic"></span></p>
+</div>
+</li>
+<li id="S1.I2.ix4" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item"><math id="S1.I2.ix4.m1" class="ltx_Math" alttext="(4)" display="inline"><mrow><mo stretchy="false">(</mo><mn>4</mn><mo stretchy="false">)</mo></mrow></math></span> 
+<div id="S1.I2.ix4.p1" class="ltx_para">
+<p class="ltx_p"><math id="S1.I2.ix4.p1.m1" class="ltx_Math" alttext="\forall\lambda\in K" display="inline"><mrow><mrow><mo rspace="0.167em">∀</mo><mi>λ</mi></mrow><mo>∈</mo><mi>K</mi></mrow></math><span class="ltx_text ltx_font_italic">に対して，</span><math id="S1.I2.ix4.p1.m2" class="ltx_Math" alttext="\lambda\cdot\mathbb{0}=\mathbb{0}" display="inline"><mrow><mrow><mi>λ</mi><mo lspace="0.222em" rspace="0.222em">⋅</mo><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">𝟘</mi></mrow><mo>=</mo><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">𝟘</mi></mrow></math><span class="ltx_text ltx_font_italic"></span></p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div id="S1.SS1.p2" class="ltx_para">
+<p class="ltx_p">proof: </p>
+</div>
+<div id="S1.Thmdefin3" class="ltx_theorem ltx_theorem_rem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Remark 1.3</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S1.Thmdefin3.p1" class="ltx_para">
+<p class="ltx_p"><math id="S1.Thmdefin3.p1.m1" class="ltx_Math" alttext="\forall\bm{x}\bm{y}\in V" display="inline"><mrow><mrow><mo rspace="0.167em">∀</mo><mrow><mi>𝒙</mi><mo>⁢</mo><mi>𝒚</mi></mrow></mrow><mo>∈</mo><mi>V</mi></mrow></math><span class="ltx_text ltx_font_italic">に対し，
+<br class="ltx_break"><math id="S1.Thmdefin3.p1.m2" class="ltx_Math" alttext="\bm{x}-\bm{y}\coloneqq\bm{x}+(-y)=\bm{x}+(-1\cdot\bm{y})" display="inline"><mrow><mrow><mi>𝐱</mi><mo>−</mo><mi>𝐲</mi></mrow><mo>≔</mo><mrow><mi>𝐱</mi><mo>+</mo><mrow><mo stretchy="false">(</mo><mrow><mo>−</mo><mi>y</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>𝐱</mi><mo>+</mo><mrow><mo stretchy="false">(</mo><mrow><mo>−</mo><mrow><mn>1</mn><mo lspace="0.222em" rspace="0.222em">⋅</mo><mi>𝐲</mi></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math></span></p>
+</div>
+</div>
+<div id="S1.SS1.p3" class="ltx_para">
+<p class="ltx_p">ここで注意すべきなのは，<math id="S1.SS1.p3.m1" class="ltx_Math" alttext="\bm{y}" display="inline"><mi>𝒚</mi></math>は <math id="S1.SS1.p3.m2" class="ltx_Math" alttext="\bm{y}" display="inline"><mi>𝒚</mi></math>の逆元であり，一方
+<math id="S1.SS1.p3.m3" class="ltx_Math" alttext="-1\cdot\bm{y}" display="inline"><mrow><mo>−</mo><mrow><mn>1</mn><mo lspace="0.222em" rspace="0.222em">⋅</mo><mi>𝒚</mi></mrow></mrow></math>はスカラー倍の意味であり，<math id="S1.SS1.p3.m4" class="ltx_Math" alttext="\bm{y}=-1\cdot\bm{y}" display="inline"><mrow><mi>𝒚</mi><mo>=</mo><mrow><mo>−</mo><mrow><mn>1</mn><mo lspace="0.222em" rspace="0.222em">⋅</mo><mi>𝒚</mi></mrow></mrow></mrow></math>が成り立つことを言っている．
+証明は各自</p>
+</div>
+<div id="S1.Thmdefin4" class="ltx_theorem ltx_theorem_ex">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">ex 1.4</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S1.Thmdefin4.p1" class="ltx_para">
+<p class="ltx_p"><math id="S1.Thmdefin4.p1.m1" class="ltx_Math" alttext="K^{n}\coloneqq\left\{\begin{pmatrix}\bm{x}_{1}\\
+\vdots\\
+\bm{x}_{n}\\
+\end{pmatrix}\middle|\bm{x}_{i}\in K~{}1\leq i\leq n\right\}" display="inline"><mrow><msup><mi>K</mi><mi>n</mi></msup><mo>≔</mo><mrow><mo>{</mo><mrow><mo>(</mo><mtable rowspacing="0pt"><mtr><mtd><msub><mi>𝒙</mi><mn>1</mn></msub></mtd></mtr><mtr><mtd><mi mathvariant="normal">⋮</mi></mtd></mtr><mtr><mtd><msub><mi>𝒙</mi><mi>n</mi></msub></mtd></mtr></mtable><mo>)</mo></mrow><mo lspace="0em" rspace="0em" stretchy="true">|</mo><mrow><msub><mi>𝒙</mi><mi>i</mi></msub><mo>∈</mo><mrow><mi>K</mi><mo lspace="0.330em">⁢</mo><mn>1</mn></mrow><mo>≤</mo><mi>i</mi><mo>≤</mo><mi>n</mi></mrow><mo>}</mo></mrow></mrow></math>
+<br class="ltx_break"><span class="ltx_text ltx_font_italic">は数ベクトルの和とスカラー倍において，ベクトル空間となる．
+<br class="ltx_break">また，この<math id="S1.Thmdefin4.p1.m2" class="ltx_Math" alttext="K^{n}" display="inline"><msup><mi>K</mi><mi>n</mi></msup></math>を<math id="S1.Thmdefin4.p1.m3" class="ltx_Math" alttext="K-" display="inline"><mrow><mi>K</mi><mo>−</mo></mrow></math>数ベクトル空間と呼ぶ．</span></p>
+</div>
+</div>
+<div id="S1.Thmdefin5" class="ltx_theorem ltx_theorem_ex">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">ex 1.5</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S1.Thmdefin5.p1" class="ltx_para">
+<p class="ltx_p"><math id="S1.Thmdefin5.p1.m1" class="ltx_Math" alttext="M(m,n;K)\coloneqq\left\{\begin{pmatrix}\bm{x}_{11}&amp;\cdots&amp;\bm{x}_{1n}\\
+\vdots&amp;\ddots&amp;\vdots\\
+\bm{x}_{m1}&amp;\cdots&amp;\bm{x}_{mn}\end{pmatrix}\middle|\begin{matrix}x_{ij}\in K\\
+1\leq i\leq m,1\leq i\leq n\end{matrix}\right\}" display="inline"><mrow><mrow><mi>M</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>m</mi><mo>,</mo><mi>n</mi><mo>;</mo><mi>K</mi><mo stretchy="false">)</mo></mrow></mrow><mo>≔</mo><mrow><mo>{</mo><mrow><mo>(</mo><mtable columnspacing="5pt" rowspacing="0pt"><mtr><mtd><msub><mi>𝒙</mi><mn>11</mn></msub></mtd><mtd><mi mathvariant="normal">⋯</mi></mtd><mtd><msub><mi>𝒙</mi><mrow><mn>1</mn><mo>⁢</mo><mi>n</mi></mrow></msub></mtd></mtr><mtr><mtd><mi mathvariant="normal">⋮</mi></mtd><mtd><mi mathvariant="normal">⋱</mi></mtd><mtd><mi mathvariant="normal">⋮</mi></mtd></mtr><mtr><mtd><msub><mi>𝒙</mi><mrow><mi>m</mi><mo>⁢</mo><mn>1</mn></mrow></msub></mtd><mtd><mi mathvariant="normal">⋯</mi></mtd><mtd><msub><mi>𝒙</mi><mrow><mi>m</mi><mo>⁢</mo><mi>n</mi></mrow></msub></mtd></mtr></mtable><mo>)</mo></mrow><mo lspace="0em" rspace="0em" stretchy="true">|</mo><mtable rowspacing="0pt"><mtr><mtd><mrow><msub><mi>x</mi><mrow><mi>i</mi><mo>⁢</mo><mi>j</mi></mrow></msub><mo>∈</mo><mi>K</mi></mrow></mtd></mtr><mtr><mtd><mrow><mrow><mn>1</mn><mo>≤</mo><mi>i</mi><mo>≤</mo><mi>m</mi></mrow><mo>,</mo><mrow><mn>1</mn><mo>≤</mo><mi>i</mi><mo>≤</mo><mi>n</mi></mrow></mrow></mtd></mtr></mtable><mo>}</mo></mrow></mrow></math>
+<br class="ltx_break"><span class="ltx_text ltx_font_italic">は行列の和とスカラーにおいて，ベクトル空間となる．
+<br class="ltx_break">この<math id="S1.Thmdefin5.p1.m2" class="ltx_math_unparsed" alttext="M(m,n:K)" display="inline"><mrow><mi>M</mi><mrow><mo stretchy="false">(</mo><mi>m</mi><mo>,</mo><mi>n</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mi>K</mi><mo stretchy="false">)</mo></mrow></mrow></math>を<math id="S1.Thmdefin5.p1.m3" class="ltx_Math" alttext="K-" display="inline"><mrow><mi>K</mi><mo>−</mo></mrow></math>行列空間と呼ぶ．</span></p>
+</div>
+</div>
+<div id="S1.Thmdefin6" class="ltx_theorem ltx_theorem_ex">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">ex 1.6</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S1.Thmdefin6.p1" class="ltx_para">
+<p class="ltx_p"><math id="S1.Thmdefin6.p1.m1" class="ltx_Math" alttext="K[x]\coloneqq\{a_{0}+a_{1}x+\cdots+a_{n}x^{n}\mid n\geq 0,a_{i}\in K,1\leq i%
+\leq n\}" display="inline"><mrow><mrow><mi>K</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>x</mi><mo stretchy="false">]</mo></mrow></mrow><mo>≔</mo><mrow><mo stretchy="false">{</mo><mrow><msub><mi>a</mi><mn>0</mn></msub><mo>+</mo><mrow><msub><mi>a</mi><mn>1</mn></msub><mo>⁢</mo><mi>x</mi></mrow><mo>+</mo><mi mathvariant="normal">⋯</mi><mo>+</mo><mrow><msub><mi>a</mi><mi>n</mi></msub><mo>⁢</mo><msup><mi>x</mi><mi>n</mi></msup></mrow></mrow><mo fence="true" lspace="0em" rspace="0em">∣</mo><mrow><mrow><mi>n</mi><mo>≥</mo><mn>0</mn></mrow><mo>,</mo><mrow><mrow><msub><mi>a</mi><mi>i</mi></msub><mo>∈</mo><mi>K</mi></mrow><mo>,</mo><mrow><mn>1</mn><mo>≤</mo><mi>i</mi><mo>≤</mo><mi>n</mi></mrow></mrow></mrow><mo stretchy="false">}</mo></mrow></mrow></math>
+<br class="ltx_break"><span class="ltx_text ltx_font_italic">は多項式の和とスカラー倍において，ベクトル空間となる．
+<br class="ltx_break">また，この<math id="S1.Thmdefin6.p1.m2" class="ltx_Math" alttext="K[x]" display="inline"><mrow><mi>K</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>x</mi><mo stretchy="false">]</mo></mrow></mrow></math>を<math id="S1.Thmdefin6.p1.m3" class="ltx_Math" alttext="K-" display="inline"><mrow><mi>K</mi><mo>−</mo></mrow></math>多項式空間と呼ぶ．
+<br class="ltx_break">とくに，<math id="S1.Thmdefin6.p1.m4" class="ltx_Math" alttext="K" display="inline"><mi>K</mi></math>の元は定数多項式とみなせすことができ，この意味において
+，<math id="S1.Thmdefin6.p1.m5" class="ltx_Math" alttext="K\subset K[x]" display="inline"><mrow><mi>K</mi><mo>⊂</mo><mrow><mi>K</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>x</mi><mo stretchy="false">]</mo></mrow></mrow></mrow></math>が成り立つ．</span></p>
+</div>
+</div>
+</section>
+<section id="S1.SS2" class="ltx_subsection">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">B) </span>部分空間</h3>
+
+<div id="S1.Thmdefin7" class="ltx_theorem ltx_theorem_defin">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">def 1.7</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S1.Thmdefin7.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">部分空間
+<br class="ltx_break"><math id="S1.Thmdefin7.p1.m1" class="ltx_Math" alttext="V:K-" display="inline"><mrow><mi>V</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>K</mi><mo>−</mo></mrow></mrow></math>ベクトル空間，<math id="S1.Thmdefin7.p1.m2" class="ltx_Math" alttext="\varnothing\neq W\subset V" display="inline"><mrow><mi mathvariant="normal">∅</mi><mo>≠</mo><mi>W</mi><mo>⊂</mo><mi>V</mi></mrow></math>について，<math id="S1.Thmdefin7.p1.m3" class="ltx_Math" alttext="W" display="inline"><mi>W</mi></math>が<math id="S1.Thmdefin7.p1.m4" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math>の部分空間であるとは，つぎの２つの条件を満たすことである．
+<br class="ltx_break"></span></p>
+<ol id="S1.I3" class="ltx_enumerate">
+<li id="S1.I3.ix1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item"><math id="S1.I3.ix1.m1" class="ltx_Math" alttext="(ss\mathrm{i})" display="inline"><mrow><mo stretchy="false">(</mo><mrow><mi>s</mi><mo>⁢</mo><mi>s</mi><mo>⁢</mo><mi mathvariant="normal">i</mi></mrow><mo stretchy="false">)</mo></mrow></math></span> 
+<div id="S1.I3.ix1.p1" class="ltx_para">
+<p class="ltx_p"><math id="S1.I3.ix1.p1.m1" class="ltx_Math" alttext="\forall\bm{x},\bm{y}\in W~{}\bm{x}+\bm{y}\in W" display="inline"><mrow><mrow><mrow><mo rspace="0.167em">∀</mo><mi>𝒙</mi></mrow><mo>,</mo><mi>𝒚</mi></mrow><mo>∈</mo><mrow><mrow><mi>W</mi><mo lspace="0.330em">⁢</mo><mi>𝒙</mi></mrow><mo>+</mo><mi>𝒚</mi></mrow><mo>∈</mo><mi>W</mi></mrow></math><span class="ltx_text ltx_font_italic"></span></p>
+</div>
+</li>
+<li id="S1.I3.ix2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item"><math id="S1.I3.ix2.m1" class="ltx_Math" alttext="(ss\mathrm{ii})" display="inline"><mrow><mo stretchy="false">(</mo><mrow><mi>s</mi><mo>⁢</mo><mi>s</mi><mo>⁢</mo><mi>ii</mi></mrow><mo stretchy="false">)</mo></mrow></math></span> 
+<div id="S1.I3.ix2.p1" class="ltx_para">
+<p class="ltx_p"><math id="S1.I3.ix2.p1.m1" class="ltx_Math" alttext="\forall\lambda\in K\forall\bm{x}\in W~{}\lambda\bm{x}\in W" display="inline"><mrow><mrow><mo rspace="0.167em">∀</mo><mi>λ</mi></mrow><mo>∈</mo><mrow><mi>K</mi><mo lspace="0.167em">⁢</mo><mrow><mo rspace="0.167em">∀</mo><mi>𝒙</mi></mrow></mrow><mo>∈</mo><mrow><mi>W</mi><mo lspace="0.330em">⁢</mo><mi>λ</mi><mo>⁢</mo><mi>𝒙</mi></mrow><mo>∈</mo><mi>W</mi></mrow></math><span class="ltx_text ltx_font_italic"></span></p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div id="S1.Thmdefin8" class="ltx_theorem ltx_theorem_rem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Remark 1.8</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S1.Thmdefin8.p1" class="ltx_para">
+<p class="ltx_p"><math id="S1.Thmdefin8.p1.m1" class="ltx_Math" alttext="W" display="inline"><mi>W</mi></math><span class="ltx_text ltx_font_italic">が<math id="S1.Thmdefin8.p1.m2" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math>の部分空間<math id="S1.Thmdefin8.p1.m3" class="ltx_Math" alttext="\Rightarrow\mathbb{0}\in W" display="inline"><mrow><mi></mi><mo stretchy="false">⇒</mo><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">𝟘</mi><mo>∈</mo><mi>W</mi></mrow></math></span></p>
+</div>
+</div>
+<div id="S1.SS2.p1" class="ltx_para">
+<p class="ltx_p">proof: 
+□
+<br class="ltx_break">この対偶命題から，<math id="S1.SS2.p1.m2" class="ltx_Math" alttext="\mathbb{0}\notin W\Rightarrow W" display="inline"><mrow><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">𝟘</mi><mo>∉</mo><mi>W</mi><mo stretchy="false">⇒</mo><mi>W</mi></mrow></math>は<math id="S1.SS2.p1.m3" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math>の部分空間でない
+<br class="ltx_break">が成り立つ．</p>
+</div>
+<div id="S1.Thmdefin9" class="ltx_theorem ltx_theorem_ex">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">ex 1.9</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S1.Thmdefin9.p1" class="ltx_para">
+<p class="ltx_p"><math id="S1.Thmdefin9.p1.m1" class="ltx_Math" alttext="V:K-" display="inline"><mrow><mi>V</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>K</mi><mo>−</mo></mrow></mrow></math><span class="ltx_text ltx_font_italic">ベクトル空間
+<br class="ltx_break">この時，<math id="S1.Thmdefin9.p1.m2" class="ltx_Math" alttext="\{\mathbb{0}\}" display="inline"><mrow><mo stretchy="false">{</mo><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">𝟘</mi><mo stretchy="false">}</mo></mrow></math>は<math id="S1.Thmdefin9.p1.m3" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math>の部分空間となる．
+<br class="ltx_break">この<math id="S1.Thmdefin9.p1.m4" class="ltx_Math" alttext="\{\mathbb{0}\}" display="inline"><mrow><mo stretchy="false">{</mo><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">𝟘</mi><mo stretchy="false">}</mo></mrow></math>を自明な部分空間と呼ぶ．</span></p>
+</div>
+</div>
+<div id="S1.Thmdefin10" class="ltx_theorem ltx_theorem_ex">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">ex 1.10</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S1.Thmdefin10.p1" class="ltx_para">
+<p class="ltx_p"><math id="S1.Thmdefin10.p1.m1" class="ltx_Math" alttext="A\in M(m,n;k)" display="inline"><mrow><mi>A</mi><mo>∈</mo><mrow><mi>M</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>m</mi><mo>,</mo><mi>n</mi><mo>;</mo><mi>k</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math><span class="ltx_text ltx_font_italic">に対し，
+<br class="ltx_break"><math id="S1.Thmdefin10.p1.m2" class="ltx_Math" alttext="W_{A}\coloneqq\{\bm{x}\in K^{n}\mid A\bm{x}=\mathbb{0}\}" display="inline"><mrow><msub><mi>W</mi><mi>A</mi></msub><mo>≔</mo><mrow><mo stretchy="false">{</mo><mrow><mi>𝐱</mi><mo>∈</mo><msup><mi>K</mi><mi>n</mi></msup></mrow><mo fence="true" lspace="0em" rspace="0em">∣</mo><mrow><mrow><mi>A</mi><mo>⁢</mo><mi>𝐱</mi></mrow><mo>=</mo><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">𝟘</mi></mrow><mo stretchy="false">}</mo></mrow></mrow></math>で定めると，この<math id="S1.Thmdefin10.p1.m3" class="ltx_Math" alttext="W_{A}" display="inline"><msub><mi>W</mi><mi>A</mi></msub></math>は
+<math id="S1.Thmdefin10.p1.m4" class="ltx_Math" alttext="K^{n}" display="inline"><msup><mi>K</mi><mi>n</mi></msup></math>の部分空間となる．</span></p>
+</div>
+</div>
+<div id="S1.SS2.p2" class="ltx_para">
+<p class="ltx_p">一方で，<math id="S1.SS2.p2.m1" class="ltx_Math" alttext="\{\bm{x}\in K^{n}\mid A\bm{x}=\mathbb{b}\}(\mathbb{b}\neq\mathbb{0})" display="inline"><mrow><mrow><mo stretchy="false">{</mo><mrow><mi>𝒙</mi><mo>∈</mo><msup><mi>K</mi><mi>n</mi></msup></mrow><mo fence="true" lspace="0em" rspace="0em">∣</mo><mrow><mrow><mi>A</mi><mo>⁢</mo><mi>𝒙</mi></mrow><mo>=</mo><mi mathvariant="normal">𝕓</mi></mrow><mo stretchy="false">}</mo></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi mathvariant="normal">𝕓</mi><mo>≠</mo><mi class="ltx_mathvariant_double-struck" mathvariant="double-struck">𝟘</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></math>は部分空間にならないことが簡単にわかる．</p>
+</div>
+<div id="S1.Thmdefin11" class="ltx_theorem ltx_theorem_ex">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">ex 1.11</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S1.Thmdefin11.p1" class="ltx_para">
+<p class="ltx_p"><math id="S1.Thmdefin11.p1.m1" class="ltx_Math" alttext="X=[x_{i}j]\in M(n;K)" display="inline"><mrow><mi>X</mi><mo>=</mo><mrow><mo stretchy="false">[</mo><mrow><msub><mi>x</mi><mi>i</mi></msub><mo>⁢</mo><mi>j</mi></mrow><mo stretchy="false">]</mo></mrow><mo>∈</mo><mrow><mi>M</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>n</mi><mo>;</mo><mi>K</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math><span class="ltx_text ltx_font_italic">に対し，
+<br class="ltx_break"><math id="S1.Thmdefin11.p1.m2" class="ltx_Math" alttext="W=\{X\in M(n;K)\mid Tr(X)=0\}" display="inline"><mrow><mi>W</mi><mo>=</mo><mrow><mo stretchy="false">{</mo><mrow><mi>X</mi><mo>∈</mo><mrow><mi>M</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>n</mi><mo>;</mo><mi>K</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo fence="true" lspace="0em" rspace="0em">∣</mo><mrow><mrow><mi>T</mi><mo>⁢</mo><mi>r</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mn>0</mn></mrow><mo stretchy="false">}</mo></mrow></mrow></math>は<math id="S1.Thmdefin11.p1.m3" class="ltx_Math" alttext="M(n;K)" display="inline"><mrow><mi>M</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>n</mi><mo>;</mo><mi>K</mi><mo stretchy="false">)</mo></mrow></mrow></math>の部分空間となる．</span></p>
+</div>
+</div>
+<div id="S1.Thmdefin12" class="ltx_theorem ltx_theorem_ex">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">ex 1.12</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S1.Thmdefin12.p1" class="ltx_para">
+<p class="ltx_p"><math id="S1.Thmdefin12.p1.m1" class="ltx_Math" alttext="f(x)\in K[x]" display="inline"><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>∈</mo><mrow><mi>K</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>x</mi><mo stretchy="false">]</mo></mrow></mrow></mrow></math><span class="ltx_text ltx_font_italic">に対し，
+<br class="ltx_break"><math id="S1.Thmdefin12.p1.m2" class="ltx_math_unparsed" alttext="deg~{}f(x)\coloneqq\left\{\begin{aligned} &amp;n\qquad\quad(f(x)=a_{0}+a_{1}x+%
+\cdots+a_{n}x^{n}(a_{n}\neq 0))\\
+&amp;-\infty\quad~{}~{}(f(x)=0)\end{aligned}\right." display="inline"><mrow><mi>d</mi><mi>e</mi><mi>g</mi><mi>f</mi><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><mo>≔</mo><mrow><mo>{</mo><mtable columnspacing="0pt" rowspacing="0pt"><mtr><mtd></mtd><mtd class="ltx_align_left" columnalign="left"><mrow><mi>n</mi><mspace width="3em"></mspace><mrow><mo stretchy="false">(</mo><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><msub><mi>a</mi><mn>0</mn></msub><mo>+</mo><mrow><msub><mi>a</mi><mn>1</mn></msub><mo>⁢</mo><mi>x</mi></mrow><mo>+</mo><mi mathvariant="normal">⋯</mi><mo>+</mo><mrow><msub><mi>a</mi><mi>n</mi></msub><mo>⁢</mo><msup><mi>x</mi><mi>n</mi></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><msub><mi>a</mi><mi>n</mi></msub><mo>≠</mo><mn>0</mn></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></mtd></mtr><mtr><mtd></mtd><mtd class="ltx_align_left" columnalign="left"><mrow><mrow><mo>−</mo><mi mathvariant="normal">∞</mi></mrow><mspace width="1.66em"></mspace><mrow><mo stretchy="false">(</mo><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mn>0</mn></mrow><mo stretchy="false">)</mo></mrow></mrow></mtd></mtr></mtable></mrow></mrow></math>
+を<math id="S1.Thmdefin12.p1.m3" class="ltx_Math" alttext="f(x)" display="inline"><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow></math>の次数と呼ぶ
+<br class="ltx_break">この時，<math id="S1.Thmdefin12.p1.m4" class="ltx_Math" alttext="n\geq 0" display="inline"><mrow><mi>n</mi><mo>≥</mo><mn>0</mn></mrow></math>として，
+<br class="ltx_break"></span></p>
+<table id="S1.Ex3" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S1.Ex3.m1" class="ltx_Math" alttext="K[x]_{n}\coloneqq\{f(x)\in K[x]\mid deg~{}f(x)\leq n\}" display="block"><mrow><mrow><mi>K</mi><mo>⁢</mo><msub><mrow><mo stretchy="false">[</mo><mi>x</mi><mo stretchy="false">]</mo></mrow><mi>n</mi></msub></mrow><mo>≔</mo><mrow><mo stretchy="false">{</mo><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>∈</mo><mrow><mi>K</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>x</mi><mo stretchy="false">]</mo></mrow></mrow></mrow><mo fence="true" lspace="0em" rspace="0em">∣</mo><mrow><mrow><mi>d</mi><mo>⁢</mo><mi>e</mi><mo>⁢</mo><mi>g</mi><mo lspace="0.330em">⁢</mo><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>≤</mo><mi>n</mi></mrow><mo stretchy="false">}</mo></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">は<math id="S1.Thmdefin12.p1.m5" class="ltx_Math" alttext="K[x]" display="inline"><mrow><mi>K</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>x</mi><mo stretchy="false">]</mo></mrow></mrow></math>の部分空間となる．</span></p>
+</div>
+</div>
+<div id="S1.Thmdefin13" class="ltx_theorem ltx_theorem_defin">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">def 1.13</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S1.Thmdefin13.p1" class="ltx_para">
+<p class="ltx_p"><math id="S1.Thmdefin13.p1.m1" class="ltx_Math" alttext="V:K-" display="inline"><mrow><mi>V</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>K</mi><mo>−</mo></mrow></mrow></math><span class="ltx_text ltx_font_italic">ベクトル空間
+<br class="ltx_break"><math id="S1.Thmdefin13.p1.m2" class="ltx_Math" alttext="\bm{x}_{1},\dots,\bm{x}_{r}\in V" display="inline"><mrow><mrow><msub><mi>𝐱</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>𝐱</mi><mi>r</mi></msub></mrow><mo>∈</mo><mi>V</mi></mrow></math>をとる．
+<br class="ltx_break"></span></p>
+<ol id="S1.I4" class="ltx_enumerate">
+<li id="S1.I4.ix1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item"><math id="S1.I4.ix1.m1" class="ltx_Math" alttext="(1)" display="inline"><mrow><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></math></span> 
+<div id="S1.I4.ix1.p1" class="ltx_para">
+<p class="ltx_p"><math id="S1.I4.ix1.p1.m1" class="ltx_Math" alttext="c_{1},\dots,c_{r}\in K" display="inline"><mrow><mrow><msub><mi>c</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>c</mi><mi>r</mi></msub></mrow><mo>∈</mo><mi>K</mi></mrow></math><span class="ltx_text ltx_font_italic">に対し，</span><math id="S1.I4.ix1.p1.m2" class="ltx_Math" alttext="c_{1}\bm{x}_{1}+\cdots+c_{r}\bm{x}_{r}\in V" display="inline"><mrow><mrow><mrow><msub><mi>c</mi><mn>1</mn></msub><mo>⁢</mo><msub><mi>𝒙</mi><mn>1</mn></msub></mrow><mo>+</mo><mi mathvariant="normal">⋯</mi><mo>+</mo><mrow><msub><mi>c</mi><mi>r</mi></msub><mo>⁢</mo><msub><mi>𝒙</mi><mi>r</mi></msub></mrow></mrow><mo>∈</mo><mi>V</mi></mrow></math><span class="ltx_text ltx_font_italic">を</span><math id="S1.I4.ix1.p1.m3" class="ltx_Math" alttext="bm{x}_{1},\dots,\bm{x}_{r}" display="inline"><mrow><mrow><mi>b</mi><mo>⁢</mo><mi>m</mi><mo>⁢</mo><msub><mi>x</mi><mn>1</mn></msub></mrow><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>𝒙</mi><mi>r</mi></msub></mrow></math><span class="ltx_text ltx_font_italic">の線型結合と呼ぶ．</span></p>
+</div>
+</li>
+<li id="S1.I4.ix2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item"><math id="S1.I4.ix2.m1" class="ltx_Math" alttext="(2)" display="inline"><mrow><mo stretchy="false">(</mo><mn>2</mn><mo stretchy="false">)</mo></mrow></math></span> 
+<div id="S1.I4.ix2.p1" class="ltx_para">
+<p class="ltx_p"><math id="S1.I4.ix2.p1.m1" class="ltx_math_unparsed" alttext="&lt;\bm{x}_{1},\dots,\bm{x}_{r}&gt;\coloneqq\{c_{1}\bm{x}_{1}+\cdots+c_{r}\bm{x}_{r}%
+\in V\mid c_{1},\dots,c_{r}\in K\}" display="inline"><mrow><mo>&lt;</mo><msub><mi>𝒙</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>𝒙</mi><mi>r</mi></msub><mo rspace="0em">&gt;</mo><mo lspace="0em">≔</mo><mrow><mo stretchy="false">{</mo><msub><mi>c</mi><mn>1</mn></msub><msub><mi>𝒙</mi><mn>1</mn></msub><mo>+</mo><mi mathvariant="normal">⋯</mi><mo>+</mo><msub><mi>c</mi><mi>r</mi></msub><msub><mi>𝒙</mi><mi>r</mi></msub><mo>∈</mo><mi>V</mi><mo lspace="0em" rspace="0.167em">∣</mo><msub><mi>c</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>c</mi><mi>r</mi></msub><mo>∈</mo><mi>K</mi><mo stretchy="false">}</mo></mrow></mrow></math><span class="ltx_text ltx_font_italic">を</span><math id="S1.I4.ix2.p1.m2" class="ltx_Math" alttext="\bm{x}_{1},\dots,\bm{x}_{r}" display="inline"><mrow><msub><mi>𝒙</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>𝒙</mi><mi>r</mi></msub></mrow></math><span class="ltx_text ltx_font_italic">で生成される（張られる）部分空間と呼び，また，</span><math id="S1.I4.ix2.p1.m3" class="ltx_Math" alttext="\{\bm{x}_{1},\dots,\bm{x}_{r}\}" display="inline"><mrow><mo stretchy="false">{</mo><msub><mi>𝒙</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>𝒙</mi><mi>r</mi></msub><mo stretchy="false">}</mo></mrow></math><span class="ltx_text ltx_font_italic">をその生成系と呼ぶ．</span></p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</section>
+</section>
+</article>
+</div>
+<footer class="ltx_page_footer">
+<div class="ltx_page_logo">Generated  on Thu Oct 22 22:00:15 2026 by <a href="http://dlmf.nist.gov/LaTeXML/" class="ltx_LaTeXML_logo"><span style="letter-spacing:-0.2em; margin-right:0.1em;">L<span class="ltx_font_smallcaps" style="position:relative; bottom:2.2pt;">a</span>T<span class="ltx_font_smallcaps" style="font-size:120%;position:relative; bottom:-0.2ex;">e</span></span><span style="font-size:90%; position:relative; bottom:-0.2ex;">XML</span><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==" alt="Mascot Sammy"></a>
+</div></footer>
+</div>
+</body>
+</html>

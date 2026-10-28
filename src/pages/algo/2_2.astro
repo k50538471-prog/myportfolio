@@ -225,7 +225,7 @@ display: none;
 <div class = "cont"> 
     <div class = "area1"></div>
     <div class = "area2">
-    <main>
+    <main is:raw>
     <h1>貪欲法</h1>
     
     <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -274,7 +274,7 @@ display: none;
     <div class="problem">
         <span class="problem-title">区間の問題</span>
     <p> n個の仕事がある．各仕事は時間\(s_i\),に始まり，時間\(t_i\),に終わります．あなたは各仕事について参加するかしないかを選ばなければならない．仕事に参加するならば，その仕事の始めから終わりまで参加しなければならない．また，参加する仕事の時間帯が重なってはいけない．最大何個の仕事に参加できるか求めなさい．<br />
-    制約：\(1 \leq n \leq 10^5, ~ 1 \leq s_i \lt t_i \leq 10^9\)  </p>
+    制約：\(1 \leq n \leq 10^5, ~ 1 \leq s_i &lt t_i \leq 10^9\)  </p>
     </div>
     <p>この問題も貪欲法により解ける．しかし，貪欲法にも様々な方法がある．例えば，選べる仕事のうち，最も開始時間の早いものを選ぶ方法がある．<br />
     しかし，必ずしもうまくいくわけではない．他にも
@@ -339,23 +339,23 @@ display: none;
     cin >> n >> s;
     //s'を作らなくてもいい
     int a = 0, b = n - 1;
-    while( a \lt = b ){
+    while( a &lt = b ){
         //左から見た場合と右から見た場合を比較
         bool left = false;
         for(int i = 0; i < a + 1; i++){
             if(s[a + i] < s[b - i]){
                 left = ture;
                 break;
+                }
             esle if(s[a + i] > s[b - i]){
                 left = false;
                 break;
+                }
             }
-            }
-        }
         if(left) t.push_back(s[a++]);
         else t.push_back(s[b--]); 
     }
-    cout \lt \lt t \lt \lt "\n";
+    cout &lt &lt t &lt &lt "\n";
     </code></pre>
     <a href="">解答例</a>
 
@@ -379,12 +379,12 @@ display: none;
         //s：カバーされていない一番左の点
         s = x[i];
         //sから距離Rを超える点まで進む
-        while(i < n && x[i] \lt= s + r)i++;
+        while(i < n && x[i] &lt= s + r)i++;
         //p：新しく印をつける点の位置
         int p = x[i - 1];
         ans++;
         //pから距離rを超える点まで進む
-        while(i < n && x[i] \lt= p + r)i++;
+        while(i < n && x[i] &lt= p + r)i++;
     }
     cout << ans << "\n";
     </code></pre>
@@ -404,7 +404,7 @@ display: none;
     <blockquote>板の長さ×節点の深さ</blockquote>
     の和に対応している．ここで，次のような性質がいえる．一番短い節点とその次に短い節点は兄弟としてよい．最適解において，一番短い節点は，最も深い葉の1つであるはずである．そして，その葉にはそな字深さの兄弟が存在するはずである．それは同様に最も深い葉であるため，そこを次に短い節点とする．<br />
     \(L_i\)が小さい順にソートされているとする．この時，一番短い板の長さは\(L_1\)次は\(L_2\)であり，これらが兄弟であったということは，これらは長さ\((L_1 + L_2)\)の板から切断されたということになる．切断の順番は自由なので，これが最後の切断とする．すると，この切断の前は\((L_1 + L_2),L_3,\dots,L_N\)のN-1本の板になっている<br/>
-    同様のことを繰り返して再帰的にこのN-1本の問題とすると解が求まる．つまりは逆の作業をするわけである．これを実直に実装すると\(O(N^2)\)となるがこの問題の場合は制限内に溶ける．しかし，\(O(Nlog~N)\)で解くこともできる．これは2-4で扱う．
+    同様のことを繰り返して再帰的にこのN-1本の問題とすると解が求まる．つまりは逆の作業をするわけである．これを実直に実装すると\(O(N^2)\)となるがこの問題の場合は制限内に溶ける．しかし，\(O(Nlog~N)\)で解くこともできる．これは2-4で扱う．</p>
     <pre><code is:raw>
     using ll = long long;
 
@@ -425,20 +425,21 @@ display: none;
             else if(l[i] < l[min2])min2 = i;
         }
 
-    //min1,min2番目の板を結合
-    int t = l[min1] + l[min2];
-    ans += t;
+        //min1,min2番目の板を結合
+        int t = l[min1] + l[min2];
+        ans += t;
 
-    if(min1 == n - 1)swap(min1, min2);
-    //min1,min2番目の数は用済みなので有効利用
-    //min1番目は，結合した値に
-    //min2番目は，一番最後の値をコピー．これにより探索範囲をn-1にできる．
-    l[min1] = t;
-    l[min2] = l[n - 1];
-    n--;
+        if(min1 == n - 1)swap(min1, min2);
+        //min1,min2番目の数は用済みなので有効利用
+        //min1番目は，結合した値に
+        //min2番目は，一番最後の値をコピー．これにより探索範囲をn-1にできる．
+        l[min1] = t;
+        l[min2] = l[n - 1];
+        n--;
     }
-    cout \lt\lt ans \lt\lt "\n";
-    </pre></code>
+
+    cout &lt&lt ans &lt&lt "\n";
+    </code></pre>
     <a href="">解答例</a>
     </main>
     </div>

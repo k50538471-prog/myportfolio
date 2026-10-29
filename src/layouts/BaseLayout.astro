@@ -20,13 +20,13 @@ const nav = [
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{title} | site name</title>
+    <title>{title}</title>
     {description && <meta name="description" content={description} />}
   </head>
   <body>
     <header class="site-header">
       <nav class="nav">
-      <a href="/" class="brand">non</a>
+      <a href="/" class="brand">{title}</a>
       <div class = "nav-links">
         {nav.map((n) => (
           <a href={n.href} aria-current={path.startsWith(n.href) ? "page" : undefined}>{n.label}</a>

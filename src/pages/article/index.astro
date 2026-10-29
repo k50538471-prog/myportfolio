@@ -1,4 +1,6 @@
 ---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
 // article の index ページ（モック v2 と同じ構成）．
 // いまはダミーデータ．あとで getCollection や articles.json に置き換える．
  
@@ -45,18 +47,17 @@ const recent = [...articles]
 // }));
 ---
  
-<html lang="ja">
+<BaseLayout title="non">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Article</title>
+    <title>article</title>
     <meta name="description" content="数学のノートと，プログラミング・計算機まわりの記事一覧．" />
   </head>
   <body>
     <main>
-      <h1>Article</h1>
-      <p class="lead">数学のノートと，プログラミング・計算機まわりの記事をまとめている．</p>
- 
+      <p>articles</p>
+      <!--<p class="lead"></p> -->
       <h2 class="label">最近の記事</h2>
       <ul class="recent">
         {recent.map((a) => (
@@ -82,8 +83,7 @@ const recent = [...articles]
       </div>
     </main>
   </body>
-</html>
- 
+</BaseLayout>
 <style>
   :root {
     --text: #1a1a1a;
@@ -102,7 +102,7 @@ const recent = [...articles]
     box-sizing: border-box;
     max-width: 46rem;
     margin: 0 auto;
-    padding: 64px 24px 96px;
+    padding: 30px 24px 60px;
   }
   a {
     color: var(--link);

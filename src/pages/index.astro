@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="数学・プログラミング・情報技術の学習ノートと制作物をまとめたポートフォリオ。">
-  <title>Notes & Projects — 技術ポートフォリオ</title>
-  <style>
+  <meta name="description" content="notes">
+  <title>blog-articles</title>
+  <style is:global>
     :root {
       color-scheme: light;
       --page: #f7f9fc;
@@ -246,7 +246,7 @@
       gap: 0px;
       padding: 5px; 
       border: 1px solid var(--surface); 
-      border-radius: var(--surface); 
+      border-radius: var(--radius); 
       background: var(--surface); 
     }
     .about-panel p { 
@@ -302,7 +302,7 @@
     .footer-inner a{
       margin-top: 10px;
     }
-    .footer-inner a2{
+    .footer-inner .social-x{
       color: #333333b7;
       font-size: 18px;
     }
@@ -334,6 +334,10 @@
       .card { min-height: auto; }
       .about-panel { padding: 22px; gap: 22px; }
       .footer-inner { flex-direction: column; gap: 5px; }
+      .nav-links .sns-x{
+        margin-left: 90px;
+        margin-right: 10px;
+      }
     }
     
     @media (prefers-reduced-motion: reduce) {
@@ -354,14 +358,14 @@
         <a href="#projects">other</a>
         <a href="#about">About</a>
         <a href="https://github.com/k50538471-prog"><img src="/GitHub_Invertocat_Black_Clearspace.svg"alt=""width="30px"height="30px"></a>
-        <a href="https://x.com/suwizyi"target="_blank"rel="noopener noreferrer">𝕏</a>
+        <spam class = "sns-x"><a href="https://x.com/suwizyi"target="_blank"rel="noopener noreferrer">𝕏</a></spam>
       </div>
     </nav>
   </header>
   <main id="top" class="wrap">
     <section class="hero" aria-labelledby="hero-title">
       <p class="hero-copy">
-      こんにちは，のんです．<br>
+      こんにちは，のんです．テスト中<br>
       インフラエンジニア志望の現在数学科所属の大学2年生です．アルゴリズム，c++，ネットワークセキュリティなどを勉強しています．
       </p>
       <!-- <div class="hero-actions">
@@ -375,13 +379,13 @@
         <div><h2 id="notes-title">ノート</h2></div>
       </div>
       <div class="grid">
-          <a class = "card-link" href="/math/mathindex.html">
+          <a class = "card-link" href="/math">
           <article class="card">
             <h3>数学系</h3>
             <p>定義・定理・証明を整理する．</p>
           </article>
           </a>
-        <a class = "card-link" href="/algo/algoindex.html">
+        <a class = "card-link" href="/algo">
         <article class="card">
             <h3>アルゴリズム・競技プロ</h3>
             <p>基本的なアルゴリズムの考え方と実装について．</p>
@@ -431,15 +435,16 @@
 
   <footer>
     <div class="wrap footer-inner"><span>© 2026 non</span>
-    <sns class = "sns">
+      <div class = "sns">
       <a href="https://github.com/k50538471-prog"><img src="/GitHub_Invertocat_Black_Clearspace.svg"alt=""width="30px"height="30px"></a>
-      <a2 href="https://x.com/suwizyi"target="_blank"rel="noopener noreferrer">𝕏</a2>
-    </sns>
+      <span class = "social-x"><a href="https://x.com/suwizyi"target="_blank"rel="noopener noreferrer">𝕏</a></span>
+      </div>
   </div>
   </footer>
   <script>
     const menuButton = document.querySelector('.menu-toggle');
     const navLinks = document.querySelector('.nav-links');
+	if (menuButton && navLinks){
     menuButton.addEventListener('click', () => {
       const isOpen = navLinks.classList.toggle('is-open');
       menuButton.setAttribute('aria-expanded', String(isOpen));
@@ -450,6 +455,7 @@
         menuButton.setAttribute('aria-expanded', 'false');
       });
     });
+	}
   </script>
 </body>
 </html>

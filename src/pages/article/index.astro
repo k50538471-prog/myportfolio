@@ -1,0 +1,173 @@
+---
+// article の index ページ（モック v2 と同じ構成）．
+// いまはダミーデータ．あとで getCollection や articles.json に置き換える．
+ 
+interface Article {
+  title: string;
+  href: string;
+  date: string; // YYYY-MM-DD
+  topic: string; // topics の slug
+}
+ 
+interface Topic {
+  slug: string;
+  name: string;
+  description: string;
+}
+ 
+const topics: Topic[] = [
+  { slug: "math", name: "数学", description: "位相空間論や代数学のノート．シリーズ2本．" },
+  { slug: "algorithm", name: "アルゴリズム", description: "ソート，グラフ，動的計画法など．" },
+  { slug: "computer", name: "コンピュータ", description: "OS，シェル，アセンブリなど計算機の仕組み．" },
+];
+ 
+const articles: Article[] = [
+  { title: "クイックソートの計算量", href: "/article/quicksort/", date: "2026-10-20", topic: "algorithm" },
+  { title: "シローの定理", href: "/article/sylow/", date: "2026-10-15", topic: "math" },
+  { title: "ダイクストラ法", href: "/article/dijkstra/", date: "2026-10-05", topic: "algorithm" },
+  { title: "群の作用", href: "/article/group-action/", date: "2026-10-03", topic: "math" },
+];
+ 
+const topicName = (slug: string) => topics.find((t) => t.slug === slug)?.name ?? slug;
+ 
+const recent = [...articles]
+  .sort((a, b) => b.date.localeCompare(a.date))
+  .slice(0, 5);
+ 
+// getCollection を使う場合の例:
+// import { getCollection } from "astro:content";
+// const entries = await getCollection("articles");
+// const articles = entries.map((e) => ({
+//   title: e.data.title,
+//   href: `/article/${e.slug}/`,
+//   date: e.data.date.toISOString().slice(0, 10),
+//   topic: e.data.topic,
+// }));
+---
+ 
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Article</title>
+    <meta name="description" content="数学のノートと，プログラミング・計算機まわりの記事一覧．" />
+  </head>
+  <body>
+    <main>
+      <h1>Article</h1>
+      <p class="lead">数学のノートと，プログラミング・計算機まわりの記事をまとめている．</p>
+ 
+      <h2 class="label">最近の記事</h2>
+      <ul class="recent">
+        {recent.map((a) => (
+          <li>
+            <time datetime={a.date}>{a.date}</time>
+            <span>
+              <a href={a.href}>{a.title}</a>
+              <span class="topic">{topicName(a.topic)}</span>
+            </span>
+          </li>
+        ))}
+      </ul>
+ 
+      <h2 class="label">トピック</h2>
+      <div class="topics">
+        {topics.map((t) => (
+          <div>
+            <h3><a href={`/topics/${t.slug}/`}>{t.name}</a></h3>
+            <p class="desc">{t.description}</p>
+            <p class="more"><a href={`/topics/${t.slug}/`}>すべて見る →</a></p>
+          </div>
+        ))}
+      </div>
+    </main>
+  </body>
+</html>
+ 
+<style>
+  :root {
+    --text: #1a1a1a;
+    --muted: #595959;
+    --link: #1a4d8f;
+    --line: #ececec;
+  }
+  body {
+    margin: 0;
+    background: #fff;
+    color: var(--text);
+    font-family: "Noto Sans JP", system-ui, sans-serif;
+    line-height: 1.8;
+  }
+  main {
+    box-sizing: border-box;
+    max-width: 46rem;
+    margin: 0 auto;
+    padding: 64px 24px 96px;
+  }
+  a {
+    color: var(--link);
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+  h1 {
+    margin: 0 0 12px;
+    font-size: 2.25rem;
+    font-weight: 700;
+  }
+  .lead {
+    margin: 0 0 64px;
+    color: var(--muted);
+  }
+  .label {
+    margin: 0 0 16px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+  }
+  .recent {
+    margin: 0 0 72px;
+    padding: 0;
+    list-style: none;
+  }
+  .recent li {
+    display: flex;
+    gap: 16px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .recent time {
+    flex: none;
+    width: 6.5rem;
+    color: var(--muted);
+    font-size: 0.85rem;
+  }
+  .topic {
+    margin-left: 4px;
+    color: var(--muted);
+    font-size: 0.8rem;
+  }
+  .topics {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+  .topics h3 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+  .topics h3 a {
+    color: var(--text);
+  }
+  .desc {
+    margin: 4px 0 0;
+    color: var(--muted);
+  }
+  .more {
+    margin: 4px 0 0;
+    font-size: 0.9rem;
+  }
+</style>

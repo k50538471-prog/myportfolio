@@ -12,7 +12,6 @@ const path = Astro.url.pathname;
 const nav = [
   { href: "/article/", label: "article" },
   { href: "/blog/", label: "blog" },
-  { href: "/about/", label: "about" },
 ];
 ---
 
@@ -26,51 +25,25 @@ const nav = [
   </head>
   <body>
     <header class="site-header">
-      <a href="/" class="site-name">site name</a>
-      <nav>
+      <nav class="nav">
+      <a href="/" class="brand">non</a>
+      <div class = "nav-links">
         {nav.map((n) => (
           <a href={n.href} aria-current={path.startsWith(n.href) ? "page" : undefined}>{n.label}</a>
         ))}
+        <span class = "git"><a href="https://github.com/k50538471-prog"><img src="/GitHub_Invertocat_Black_Clearspace.svg"alt=""width="30px"height="30px"></a></span>
+        <span class = "twitter"><a href="https://x.com/suwizyi"target="_blank"rel="noopener noreferrer">𝕏</a></span>
+      </div>
       </nav>
     </header>
     <slot />
-    <footer class="site-footer">© site name</footer>
+  <footer>
+    <div class="wrap footer-inner"><span>© 2026 non</span>
+      <div class = "sns">
+      <a href="https://github.com/k50538471-prog"><img src="/GitHub_Invertocat_Black_Clearspace.svg"alt=""width="30px"height="30px"></a>
+      <span class = "social-x"><a href="https://x.com/suwizyi"target="_blank"rel="noopener noreferrer">𝕏</a></span>
+      </div>
+    </div>
+  </footer>
   </body>
 </html>
-<style>
-:root {
-  --bg: #fbfbf9;
-  --text: #222;
-  --muted: #6b6b66;
-  --accent: #2f5d8a;
-  --line: #dcdcd6;
-  --code-bg: #1f2328;
-}
-body {
-  margin: 0;
-  background: var(--bg);
-  color: var(--text);
-  font-family: "Hiragino Sans", "Noto Sans JP", sans-serif;
-  line-height: 1.8;
-}
-a { color: var(--accent); text-decoration: none; }
-a:hover { text-decoration: underline; }
-
-.site-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 40px;
-  border-bottom: 1px solid var(--line);
-}
-.site-header nav { display: flex; gap: 24px; font-size: 15px; }
-.site-header nav a[aria-current="page"] { font-weight: 700; }
-.site-name { font-weight: 700; font-size: 18px; color: var(--text); }
-.site-footer {
-  margin-top: 80px;
-  padding: 28px 40px;
-  border-top: 1px solid var(--line);
-  font-size: 13px;
-  color: var(--muted);
-}
-</style>

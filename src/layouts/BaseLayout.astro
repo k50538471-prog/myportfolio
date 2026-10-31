@@ -2,12 +2,12 @@
 /* headerとfooterの共通レイアウト */
 
 import "../styles/global.css";
-
+import { SITE_TITLE } from "../consts";
 interface Props {
-  title: string;
+  //pagetitle: string;
   description?: string;
 }
-const { title, description = "" } = Astro.props;
+const { /*pagetitle, */description = "" } = Astro.props;
 const path = Astro.url.pathname;
 const nav = [
   { href: "/article/", label: "article" },
@@ -19,14 +19,14 @@ const nav = [
 <html lang="ja">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{title}</title>
+    <meta name="viewport" content="width=device-width, initial-scale" />
+    <title>{SITE_TITLE}</title>
     {description && <meta name="description" content={description} />}
   </head>
   <body>
     <header class="site-header">
       <nav class="nav">
-      <a href="/" class="brand">{title}</a>
+      <a href="/" class="brand">{SITE_TITLE}</a>
       <div class = "nav-links">
         {nav.map((n) => (
           <a href={n.href} aria-current={path.startsWith(n.href) ? "page" : undefined}>{n.label}</a>

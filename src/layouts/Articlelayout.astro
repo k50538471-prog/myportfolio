@@ -1,38 +1,190 @@
 ---
-/* 記事用レイアウト */
-import "../styles/global.css";
-
+// 記事用レイアウト 
+// src/layouts/ArticleLayout.astro
+// 使い方: 記事ページで <ArticleLayout {...frontmatter} headings={headings}> <Content /> </ArticleLayout>
+import BaseLayout from './BaseLayout.astro';
+ 
+interface Heading { depth: number; slug: string; text: string }
+interface Link { title: string; href: string }
+ 
 interface Props {
   title: string;
   description?: string;
+  date: Date | string;
+  updated?: Date | string;
+  variant?: 'article' | 'blog'; // article: 技術・数学系 / blog: 雑記
+  category?: string;            // 例: math, tech
+  tags?: string[];
+  toc?: boolean;                // blogでも長い記事は true で目次を出せる
+  headings?: Heading[];         // md の render() が返す headings
+  prev?: Link;
+  next?: Link;
 }
-const { title, description = "" } = Astro.props;
-const path = Astro.url.pathname;
-const nav = [
-  { href: "/article/", label: "article" },
-  { href: "/blog/", label: "blog" },
-  { href: "/about/", label: "about" },
-];
+ 
+const {
+  title, description, date, updated,
+  variant = 'article', category, tags = [],
+  toc = variant === 'article', headings = [], prev, next,
+} = Astro.props;
+ 
+const fmt = (d: Date | string) =>
+  new Date(d).toLocaleDateString('ja-JP', { year: 'numeric', month: '2-digit', day: '2-digit' })
+    .replaceAll('/', '-');
+ 
+const TOC_MAX_DEPTH = 4; // 目次に出す深さ(h1〜h4)
+const tocItems = headings.filter((h) => h.depth <= TOC_MAX_DEPTH);
+// 一番浅い見出しを第1階層として、深さの差だけインデントする
+const baseDepth = tocItems.length ? Math.min(...tocItems.map((h) => h.depth)) : 1;
+const showToc = toc && tocItems.length > 0;
 ---
-
-<!doctype html>
-<html lang="ja">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{title} | site name</title>
-    {description && <meta name="description" content={description} />}
-  </head>
-  <body>
-    <header class="site-header">
-      <a href="/" class="site-name">site name</a>
-      <nav>
-        {nav.map((n) => (
-          <a href={n.href} aria-current={path.startsWith(n.href) ? "page" : undefined}>{n.label}</a>
-        ))}
-      </nav>
-    </header>
-    <slot />
-    <footer class="site-footer">© site name</footer>
-  </body>
-</html>
+ 
+<BaseLayout description={description}>
+  <div class:list={['page', { 'has-toc': showToc }]} data-variant={variant}>
+    <main>
+      <header class="head">
+        <div class="meta">
+          <time datetime={new Date(date).toISOString()}>{fmt(date)}</time>
+          {updated && <span>更新 {fmt(updated)}</span>}
+          {category && <span>{category}</span>}
+          {tags.map((t) => <a href={`/tags/${t}/`}>#{t}</a>)}
+        </div>
+        <h1>{title}</h1>
+        {variant === 'article' && description && <p class="lead">{description}</p>}
+      </header>
+ 
+      {showToc && (
+        <details class="toc-inline">
+          <summary>目次</summary>
+          <ul>
+            {tocItems.map((h) => (
+              <li data-lv={h.depth - baseDepth} style={`--lv:${h.depth - baseDepth}`}><a href={`#${h.slug}`}>{h.text}</a></li>
+            ))}
+          </ul>
+        </details>
+      )}
+ 
+      <div class="prose"><slot /></div>
+ 
+      {(prev || next) && (
+        <nav class="pager" aria-label="前後の記事">
+          {prev ? <a href={prev.href}>← {prev.title}</a> : <span />}
+          {next ? <a href={next.href}>{next.title} →</a> : <span />}
+        </nav>
+      )}
+    </main>
+ 
+    {showToc && (
+      <aside class="toc-side" aria-label="目次">
+        <div class="toc-sticky">
+          <div class="toc-title">目次</div>
+          <ul>
+            {tocItems.map((h) => (
+              <li data-lv={h.depth - baseDepth} style={`--lv:${h.depth - baseDepth}`}><a href={`#${h.slug}`}>{h.text}</a></li>
+            ))}
+          </ul>
+        </div>
+      </aside>
+    )}
+  </div>
+</BaseLayout>
+ 
+<style>
+  :root {
+    --bg: #fbfbf9;
+    --text: #222;
+    --muted: #6b6b66;
+    --line: #dcdcd6;
+    --accent: #2f5d8a;
+    --code-bg: #1f2328;
+    --soft: #eef3f8;
+  }
+ 
+  :global(body) {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Hiragino Sans', 'Noto Sans JP', 'Yu Gothic', sans-serif;
+  }
+ 
+  .page {
+    max-width: 40em;
+    margin: 0 auto;
+    padding: 56px 24px 0;
+    color: var(--text);
+  }
+  .page.has-toc {
+    max-width: 960px;
+    display: grid;
+    grid-template-columns: minmax(0, 40em) 200px;
+    gap: 48px;
+    justify-content: center;
+  }
+ 
+  /* ---- ヘッダー部 ---- */
+  .meta { display: flex; flex-wrap: wrap; gap: 4px 12px; font-size: 13px; color: var(--muted); margin-bottom: 12px; }
+  .meta a { color: var(--muted); text-decoration: none; }
+  .meta a:hover { color: var(--accent); }
+  h1 { margin: 0 0 16px; font-size: 32px; line-height: 1.4; }
+  .lead { margin: 0 0 40px; padding-bottom: 28px; border-bottom: 1px solid var(--line); color: #555; line-height: 1.8; }
+ 
+  /* blog: 日付を大きく、タイトルは控えめ */
+  [data-variant='blog'] .meta { font-size: 20px; color: var(--accent); margin-bottom: 8px; }
+  [data-variant='blog'] h1 { font-size: 28px; font-weight: 600; line-height: 1.5; margin-bottom: 40px; }
+ 
+  /* ---- 目次 ---- */
+  ul { list-style: none; margin: 0; padding: 0; }
+  .toc-side { font-size: 14px; line-height: 1.7; }
+  .toc-sticky { position: sticky; top: 24px; }
+  .toc-title { font-weight: 700; margin-bottom: 10px; }
+  .toc-side ul { display: flex; flex-direction: column; gap: 8px; border-left: 1px solid var(--line); padding-left: 14px; }
+  .toc-side a, .toc-inline a { color: #555; text-decoration: none; }
+  .toc-side a:hover, .toc-inline a:hover { color: var(--accent); }
+  .toc-side li, .toc-inline li { padding-left: calc(var(--lv, 0) * 14px); }
+  .toc-side li:not([data-lv='0']), .toc-inline li:not([data-lv='0']) { font-size: 13px; }
+  .toc-side li[data-lv='0'] > a, .toc-inline li[data-lv='0'] > a { color: var(--text); font-weight: 600; }
+ 
+  .toc-inline { display: none; margin: 0 0 32px; padding: 12px 16px; background: #f1f1ec; border-radius: 6px; font-size: 14px; line-height: 1.9; }
+  .toc-inline summary { cursor: pointer; font-weight: 600; }
+ 
+  /* ---- 本文(mdから来る要素は :global で当てる) ---- */
+  .prose { font-size: 16px; line-height: 1.9; overflow-wrap: anywhere; }
+  .prose :global(p) { margin: 0 0 20px; }
+  .prose :global(h1) { margin: 56px 0 20px; font-size: 26px; line-height: 1.4; }
+  .prose :global(h2) { margin: 48px 0 16px; font-size: 22px; line-height: 1.5; }
+  .prose :global(h3) { margin: 32px 0 12px; font-size: 18px; line-height: 1.5; }
+  .prose :global(h4) { margin: 24px 0 8px; font-size: 16px; line-height: 1.5; }
+  .prose :global(a) { color: var(--accent); }
+  .prose :global(ul), .prose :global(ol) { margin: 0 0 20px; padding-left: 1.6em; }
+  .prose :global(ul) { list-style: disc; }
+  .prose :global(li) { margin: 4px 0; }
+  .prose :global(img) { max-width: 100%; height: auto; border-radius: 4px; }
+  .prose :global(blockquote) { margin: 0 0 20px; padding: 14px 16px; background: var(--soft); border-radius: 6px; }
+  .prose :global(blockquote p:last-child) { margin: 0; }
+ 
+  /* article: h2 は左線、blog: h2 は下線 */
+  [data-variant='article'] .prose :global(h1), [data-variant='article'] .prose :global(h2) { padding-left: 12px; border-left: 4px solid var(--accent); }
+  [data-variant='blog'] .prose { line-height: 2; }
+  [data-variant='blog'] .prose :global(h1), [data-variant='blog'] .prose :global(h2) { font-size: 20px; font-weight: 600; padding-bottom: 6px; border-bottom: 1px solid var(--line); }
+  [data-variant='blog'] .prose :global(h1) { font-size: 22px; }
+  /* コード(Shiki の出力 pre.astro-code にも効く) */
+  .prose :global(pre) { margin: 0 0 24px; padding: 16px 14px; border-radius: 6px; font-size: 13px; line-height: 1.7; overflow-x: auto; background: var(--code-bg); color: #e6e6e0; }
+  .prose :global(:not(pre) > code) { padding: 2px 6px; background: #efefea; border-radius: 4px; font-size: 0.9em; }
+ 
+  /* 表: 狭い画面では横スクロール */
+  .prose :global(table) { display: block; max-width: 100%; overflow-x: auto; margin: 0 0 24px; border-collapse: collapse; font-size: 14px; text-align: center; }
+  .prose :global(th), .prose :global(td) { padding: 8px 12px; border: 1px solid var(--line); }
+  .prose :global(th) { background: #efefea; }
+ 
+  /* ---- 前後リンク ---- */
+  .pager { display: flex; justify-content: space-between; gap: 16px; margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--line); font-size: 14px; }
+  .pager a { color: var(--accent); text-decoration: none; }
+  .pager a:hover { text-decoration: underline; }
+ 
+  /* ---- 狭い画面: 目次は冒頭の折りたたみに ---- */
+  @media (max-width: 900px) {
+    .page.has-toc { display: block; max-width: 40em; }
+    .toc-side { display: none; }
+    .toc-inline { display: block; }
+    h1 { font-size: 26px; }
+  }
+</style>

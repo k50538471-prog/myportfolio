@@ -1,7 +1,7 @@
 ---
 title: '数学系'
 description: '数学test'
-pubDate: '2026-10-29'
+date: '2026-10-29'
 topic: '数学'
 href: '/math/'
 ---

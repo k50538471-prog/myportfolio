@@ -1,7 +1,13 @@
 ---
 title: 'First post'
 description: 'これはてすと'
-pubDate: '2026-10-29'
+date: '2026-10-30'
 topic: '数学'
+tags: [あああ，これはタグ]
+toc: true
 ---
-aaaa
+# 数学Ⅰ
+## あ
+## a
+# あああ
+なんでだ

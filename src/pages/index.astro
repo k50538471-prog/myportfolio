@@ -1,8 +1,14 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import "../styles/homecss.css";
+import { SITE_TITLE } from "../consts";
 ---
-<BaseLayout title="non">
+<style>
+.origin{
+  padding-bottom: 100px;
+}
+</style>
+<BaseLayout>
 <main class="wrap">
 <h1>改造中です</h1>
 <section class="intro">
@@ -14,7 +20,10 @@ import "../styles/homecss.css";
 応急処置リンク
 <ol>
 <li><a href = "/blog/m">blog</a></li>
-<li><a href = "/article/m">article</a></li>
+<li><a href = "/article/">article</a></li>
 </ol>
+<div class = "origin">
+aaaaa
+</div>
 </main>
 </BaseLayout>

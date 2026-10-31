@@ -1,21 +1,22 @@
 ---
-import { type CollectionEntry, getCollection, render } from 'astro:content';
-import BlogPost from '../../layouts/BlogPost.astro';
+// src/pages/article/[...slug].astro
+import { getCollection, render } from "astro:content";
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
 
 export async function getStaticPaths() {
-	// href付き(数学系スタブ)はページを作らない
-	const posts = await getCollection('article', (a) => !a.data.href);
-	return posts.map((post) => ({
-		params: { slug: post.id },
-		props: post,
-	}));
+  const entries = await getCollection("article");
+  return entries.map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
 }
-type Props = CollectionEntry<'article'>;
-
-const post = Astro.props;
-const { Content } = await render(post);
+const { entry } = Astro.props;
+const { Content, headings } = await render(entry);
 ---
-
-<BlogPost {...post.data}>
-	<Content />
-</BlogPost>
+<ArticleLayout
+	title={entry.data.title}
+	date={entry.data.date}
+	description={entry.data.description}
+	headings={headings}
+	tags={entry.data.tags}
+	toc={entry.data.toc}
+>
+  <Content />
+</ArticleLayout>

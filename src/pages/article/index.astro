@@ -1,6 +1,6 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-
+import { getCollection } from "astro:content";
 // article の index ページ（モック v2 と同じ構成）．
 // いまはダミーデータ．あとで getCollection や articles.json に置き換える．
  
@@ -23,81 +23,74 @@ const topics: Topic[] = [
   { slug: "computer", name: "コンピュータ", description: "OS，シェル，アセンブリなど計算機の仕組み．" },
 ];
  
-const articles: Article[] = [
+/*const articles: Article[] = [
   { title: "クイックソートの計算量", href: "/article/quicksort/", date: "2026-10-20", topic: "algorithm" },
-  { title: "シローの定理", href: "/article/sylow/", date: "2026-10-15", topic: "math" },
+  { title: "シローの定理", href: "/article/sylow/", date: "2026-10-15", topic: "" },
   { title: "ダイクストラ法", href: "/article/dijkstra/", date: "2026-10-05", topic: "algorithm" },
-  { title: "群の作用", href: "/article/group-action/", date: "2026-10-03", topic: "math" },
-];
- 
-const topicName = (slug: string) => topics.find((t) => t.slug === slug)?.name ?? slug;
- 
+  { title: "群の作用", href: "/article/group-action/", date: "2026-10-03", topic: "" },
+];*/
+
+const topicName = (slug: string) =>"#" + (topics.find((t) => t.slug === slug)?.name ?? slug);
+
+
+ const entries = await getCollection("article");
+ const articles = entries.map((e) => ({
+   title: e.data.title,
+   href: `/article/${e.id}/`,
+   date: e.data.date.toISOString().slice(0, 10),
+   topic: e.data.topic,
+ }));
+
 const recent = [...articles]
   .sort((a, b) => b.date.localeCompare(a.date))
   .slice(0, 5);
- 
-// getCollection を使う場合の例:
-// import { getCollection } from "astro:content";
-// const entries = await getCollection("articles");
-// const articles = entries.map((e) => ({
-//   title: e.data.title,
-//   href: `/article/${e.slug}/`,
-//   date: e.data.date.toISOString().slice(0, 10),
-//   topic: e.data.topic,
-// }));
 ---
  
-<BaseLayout title="non">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>article</title>
-    <meta name="description" content="数学のノートと，プログラミング・計算機まわりの記事一覧．" />
-  </head>
-  <body>
-    <main>
-      <p>articles</p>
-      <!--<p class="lead"></p> -->
-      <h2 class="label">最近の記事</h2>
-      <ul class="recent">
-        {recent.map((a) => (
-          <li>
-            <time datetime={a.date}>{a.date}</time>
-            <span>
-              <a href={a.href}>{a.title}</a>
-              <span class="topic">{topicName(a.topic)}</span>
-            </span>
-          </li>
-        ))}
-      </ul>
- 
-      <h2 class="label">トピック</h2>
-      <div class="topics">
-        {topics.map((t) => (
-          <div>
-            <h3><a href={`/topics/${t.slug}/`}>{t.name}</a></h3>
-            <p class="desc">{t.description}</p>
-            <p class="more"><a href={`/topics/${t.slug}/`}>すべて見る →</a></p>
-          </div>
-        ))}
+<BaseLayout pagetitle="non">
+<main>
+  <p>articles</p>
+  <!--<p class="lead"></p> -->
+  <h2 class="label">recently</h2>
+  <ul class="recent">
+    {recent.map((a) => (
+      <li>
+        <time datetime={a.date}>{a.date}</time>
+        <span>
+          <a href={a.href}>{a.title}</a>
+          <span class="topic">{topicName(a.topic)}</span>
+        </span>
+      </li>
+    ))}
+  </ul>
+
+  <h2 class="label">トピック</h2>
+  <div class="topics">
+    {topics.map((t) => (
+      <div>
+        <h3><a href={`/topics/${t.slug}/`}>{t.name}</a></h3>
+        <p class="desc">{t.description}</p>
+        <p class="more"><a href={`/topics/${t.slug}/`}>すべて見る →</a></p>
       </div>
-    </main>
-  </body>
+    ))}
+  </div>
+</main>
 </BaseLayout>
 <style>
+  /*
   :root {
     --text: #1a1a1a;
     --muted: #595959;
     --link: #1a4d8f;
     --line: #ececec;
-  }
+  }*/
+  /*
   body {
     margin: 0;
     background: #fff;
     color: var(--text);
     font-family: "Noto Sans JP", system-ui, sans-serif;
     line-height: 1.8;
-  }
+  }*/
   main {
     box-sizing: border-box;
     max-width: 46rem;
@@ -105,11 +98,11 @@ const recent = [...articles]
     padding: 30px 24px 60px;
   }
   a {
-    color: var(--link);
-    text-decoration: none;
+    color: black;
   }
   a:hover {
-    text-decoration: underline;
+    text-decoration: none;
+    color: #78a7b4;
   }
   h1 {
     margin: 0 0 12px;

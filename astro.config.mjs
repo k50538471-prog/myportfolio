@@ -6,7 +6,7 @@ import { defineConfig, fontProviders } from 'astro/config';
 
 // https://astro.build/config
 export default defineConfig({
-	site: 'http://localhost:4321/',
+	site: 'https://myportfolio-1zd.pages.dev/',
 	integrations: [mdx(), sitemap()],
 	fonts: [
 		{
@@ -32,4 +32,7 @@ export default defineConfig({
 			},
 		},
 	],
+	markdown: {
+    breaks: true,
+	},
 });

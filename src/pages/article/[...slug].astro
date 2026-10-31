@@ -1,7 +1,7 @@
 ---
 // src/pages/article/[...slug].astro
 import { getCollection, render } from "astro:content";
-import Articlelayout from "../../layouts/ArticleLayout.astro";
+import Articlelayout from "../../layouts/Articlelayout.astro";
 
 export async function getStaticPaths() {
   const entries = await getCollection("article");

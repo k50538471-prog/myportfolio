@@ -2,7 +2,7 @@
 title: "カーネルとシェルの入門"
 description: "OSの構成要素と，シェルの種類について"
 date: 2026-11-01
-topic: "computer"
+topic: "コンピュータ"
 tags: ["OS", "シェル", "入門"]
 toc: true
 ---

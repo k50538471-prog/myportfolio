@@ -2,7 +2,7 @@
 title: "カーネルって？　シェルって？"
 description: "kernelとshellについて簡単に解説してみます．"
 date: 2026-11-01
-topic: "computer"
+topic: "コンピュータ"
 tags: ["OS", "シェル","kernel"]
 toc: true
 ---

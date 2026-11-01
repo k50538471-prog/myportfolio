@@ -9,7 +9,7 @@ export async function getRecentArticles(n = 5) {
 		.map((a) => ({
 			title: a.data.title,
 			description: a.data.description,
-			date: a.data.pubDate,
+			date: a.data.date,
 			topic: a.data.topic,
 			url: a.data.href ?? `/article/${a.id}/`,
 		}))
@@ -23,7 +23,7 @@ export async function getRecentBlogs(n = 5) {
 		.map((b) => ({
 			title: b.data.title,
 			description: b.data.description,
-			date: b.data.pubDate,
+			date: b.data.date,
 			url: `/blog/${b.id}/`,
 		}))
 		.sort(byDateDesc)

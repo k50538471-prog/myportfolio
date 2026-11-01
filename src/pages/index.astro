@@ -1,29 +1,288 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import "../styles/homecss.css";
-import { SITE_TITLE } from "../consts";
----
-<style>
-.origin{
-  padding-bottom: 100px;
+import { getCollection } from "astro:content";
+import { getRecentAll, getRecentArticles } from "../posts.ts";
+const intro = [
+  "こんにちは，のんです．",
+  "インフラエンジニア志望の現在数学科所属の大学2年生です．アルゴリズム，c++，ネットワークセキュリティなどを勉強しています．",
+];
+
+const skills = [
+  ["LaTeX", "c++", "Docker", "linux", "GitHub"],
+];
+
+interface Topic {
+  slug: string;
+  name: string;
+  description: string;
 }
-</style>
+ 
+const topics: Topic[] = [
+  { slug: "math", name: "数学", description: "位相空間論や代数学のノート．シリーズ2本．" },
+  { slug: "algorithm", name: "アルゴリズム", description: "ソート，グラフ，動的計画法など．" },
+  { slug: "computer", name: "コンピュータ", description: "OS，シェル，アセンブリなど計算機の仕組み．" },
+];
+
+const topicLabel = (slug: string) =>
+  topics.find((t) => t.slug === slug)?.name ?? slug;
+
+const recently = (await getRecentAll(5)).map((r) => ({
+  date: r.date.toISOString().slice(0, 10),
+  kind: r.kind === "article" ? `article・${topicLabel(r.topic)}` : "blog",
+  title: r.title,
+  description: r.description,
+  href: r.url,
+}));
+
+ /*const entries = await getCollection("article");
+ const articles = entries.map((e) => ({
+   title: e.data.title,
+   href: e.data.href ?? `/article/${e.id}/`,
+   date: e.data.date.toISOString().slice(0, 10),
+   topic: e.data.topic,
+ }));*/
+
+const articlerecently = (await getRecentArticles(3)).map((a) => ({
+  title: a.title,
+  description: a.description,
+  date: a.date.toISOString().slice(0, 10),
+  topic: a.topic,
+  href: a.url,
+}));
+
+
+/*const recent = [...articles]
+  .sort((a, b) => b.date.localeCompare(a.date))
+  .slice(0, 3);*/
+---
+
 <BaseLayout>
-<main class="wrap">
-<h1>改造中です</h1>
-<section class="intro">
-      <p class="intro-sentcence">
-      こんにちは，のんです．<br>
-      インフラエンジニア志望の現在数学科所属の大学2年生です．アルゴリズム，c++，ネットワークセキュリティなどを勉強しています．
-      </p>
-  </section>
-応急処置リンク
-<ol>
-<li><a href = "/blog/m">blog</a></li>
-<li><a href = "/article/">article</a></li>
-</ol>
-<div class = "origin">
-aaaaa
-</div>
-</main>
+  <main class="wrap">
+      <section class="intro">
+        <p class="intro-sentcence">
+          {intro.map((line, i) => (
+            <>
+              {line}
+              {i < intro.length - 1 && <br />}
+            </>
+          ))}
+        </p>
+      </section>
+
+      <section class="home-block">
+        <div class="home-head">
+          <h2>recently</h2>
+        </div>
+        <ul class="list">
+          {recently.map((r) => (
+            <li>
+              <a class="home-recent" href={r.href}>
+                <span class="home-date">{r.date}</span>
+                <span class="home-kind">{r.kind}</span>
+                <span class="home-title">{r.title}</span>
+                <span class="home-desc">{r.description}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section class="home-cards">
+        <div class="home-card">
+          <a class="card-nav" href="/article/"><h2>article</h2></a>
+          <p class="home-desc">数学や技術系の知識をまとめています．</p>
+          <ul class="home-links list">
+            {articlerecently.map((a) => (
+            <a href={a.href}><li class = "article-list">
+              <time datetime={a.date}>{a.date}</time>
+              <span>{a.title}</span>
+              {/*<span class="topic">{topicName(a.topic)}</span>*/}
+            </li></a>
+          ))}
+          </ul>
+          <a class="home-more strong" href="/article/">article 一覧へ →</a>
+        </div>
+
+        <div class="home-card">
+          <a href="/blog/"><h2>blog</h2></a>
+          <p class="home-desc">ブログを投稿しています．</p>
+          <!--<ul class="home-links list">
+            {blogPosts.map((p) => (
+              <li>
+                <a href={p.href}><span>{p.title}</span></a>
+              </li>
+            ))}
+          </ul>-->
+          <h1>準備中</h1>
+          <a class="home-more strong" href="/blog/">blog 一覧へ →</a>
+        </div>
+      </section>
+
+      <section class="home-block home-skills">
+        <div class="home-head">
+          <h2>topics</h2>
+        </div>
+        {skills.map((g) => (
+          //<div class="home-skill-row">
+            <ul class="home-chips list">
+              {g.map((i) => <li>{i}</li>)}
+            </ul>
+        ))}
+      </section>
+  </main>
 </BaseLayout>
+
+<style>
+  /* recently */
+  .list{
+    list-style: none;
+  }
+  .recent-colum{
+    display: flex;
+    flex-direction: column;
+  }
+  .home-recent {
+    display: grid;
+    grid-template-columns: 7rem 9.5rem 1fr;
+    gap: 1rem;
+    align-items: baseline;
+    padding: 5px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .home-date {
+    font-size: 0.875rem;
+    color: var(--muted);
+  }
+  .home-kind {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--blue-dark);
+  }
+  .home-title {
+    font-size: 1.0rem;
+    transition: 0.15s;
+  }
+  .home-recent:hover .home-title,
+  .home-recent:focus-visible .home-title {
+    text-decoration: none;
+    color: #78a7b4;
+  }
+  .home-desc {
+  grid-column: 1 / -1;  /* タイトルの真下にそろえる */
+  font-size: 0.8125rem;
+  color: var(--muted);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;   /* 長い説明は2行で切る */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  }
+
+  /* article / blog */
+  .home-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3.5rem;
+  }
+  .home-card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 1.75em;
+  }
+  .home-card h2 {
+    padding-bottom: 8px;
+    font-size: 18px;
+    border-bottom: 2px solid #bcc4ce;
+  }
+  .home-desc {
+    margin: 0 0 1.25rem;
+    font-size: 0.9375rem;
+    color: var(--muted);
+  }
+  .article-list{
+    display: flex;
+    flex-direction: row;
+    margin: auto 0;
+    gap: 10px;
+    border-bottom: 1px solid var(--line);
+  }
+  .home-links {
+    margin-bottom: 1.25rem;
+    padding: 10px;
+  }
+  .home-links a :hover{
+    text-decoration: none;
+    color: #78a7b4;
+  }
+/*  .home-links a{
+    display: flex;
+    justify-content: space-between;
+    padding: 0.625rem 0;
+  }*/
+    .home-links time{
+    display: flex;
+    justify-content: space-between;
+    padding: 0.625rem 0;
+  }
+    .home-links span{
+    display: flex;
+    justify-content: space-between;
+    padding: 0.625rem 0;
+  }
+  .home-more {
+    display: flex;
+    flex-direction: row;
+    font-size: 16px;
+    color: var(--muted);
+    justify-content: flex-end;
+  }
+  .home-more.strong {
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: var(--blue-dark);
+  }
+  .home-arrow {
+    color: var(--muted);
+  }
+
+  /* skills */
+  .home-skill-row {
+    display: grid;
+    grid-template-columns: 7.5rem 1fr;
+    gap: 1rem;
+    align-items: baseline;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .home-skill-label {
+    font-size: 0.875rem;
+    color: var(--muted);
+  }
+  .home-chips {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: .5rem;
+    padding: 0;
+  }
+  .home-chips li {
+    background: var(--blue-pale);
+    color: var(--blue-dark);
+    border-radius: 999px;
+    padding: 0.25rem 0.875rem;
+    font-size: 0.9375rem;
+  }
+
+  @media (max-width: 600px) {
+    .home-recent {
+      grid-template-columns: 1fr;
+      gap: 0.125rem;
+    }
+    .home-skill-row {
+      grid-template-columns: 1fr;
+      gap: 0.5rem;
+    }
+  }
+</style>

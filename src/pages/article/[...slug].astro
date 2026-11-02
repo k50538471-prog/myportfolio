@@ -4,7 +4,7 @@ import { getCollection, render } from "astro:content";
 import Articlelayout from "../../layouts/Articlelayout.astro";
 
 export async function getStaticPaths() {
-  const entries = await getCollection("article");
+  const entries = (await getCollection("article")).filter((e) => !e.data.href);
   return entries.map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
 }
 const { entry } = Astro.props;

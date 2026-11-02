@@ -40,3 +40,13 @@ export async function getRecentAll(n = 5) {
 		.sort(byDateDesc)
 		.slice(0, n);
 }
+
+// n を省略すると article + blog の全件(新しい順)
+export async function getAll(n?: number) {
+	const [a, b] = await Promise.all([getArticles(), getBlogs()]);
+	const merged = [
+		...a.map((x) => ({ ...x, kind: 'article' as const })),
+		...b.map((x) => ({ ...x, kind: 'blog' as const })),
+	].sort(byDateDesc);
+	return n ? merged.slice(0, n) : merged;
+}

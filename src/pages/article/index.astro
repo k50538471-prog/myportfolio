@@ -1,7 +1,7 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import { getCollection } from "astro:content";
-// article の index ページ（モック v2 と同じ構成）．
+import { getCollection, getAll } from "astro:content";
+// article の index ページ
 // いまはダミーデータ．あとで getCollection や articles.json に置き換える．
  
 interface Article {
@@ -32,6 +32,12 @@ const topics: Topic[] = [
 
 const topicName = (slug: string) =>"#" + (topics.find((t) => t.slug === slug)?.name ?? slug);
 
+const allart = (await getAll()).map((all) => ({
+  title: all.title,
+  description: all.description,
+  date: all.date.toISOString().slice(0, 10),
+  href: all.url,
+}));
 
  const entries = await getCollection("article");
  const articles = entries.map((e) => ({
@@ -46,7 +52,7 @@ const recent = [...articles]
   .slice(0, 5);
 ---
  
-<BaseLayout pagetitle="non">
+<BaseLayout>
 <main>
   <p>articles</p>
   <!--<p class="lead"></p> -->
@@ -62,7 +68,7 @@ const recent = [...articles]
       </li>
     ))}
   </ul>
-
+<!-- 
   <h2 class="label">トピック</h2>
   <div class="topics">
     {topics.map((t) => (
@@ -73,6 +79,22 @@ const recent = [...articles]
       </div>
     ))}
   </div>
+-->
+    <p>記事一覧</p>
+  <!--<p class="lead"></p> -->
+  <ul class="recent">
+    {allart.map((all) => (
+      <li>
+        <time datetime={all.date}>{all.date}</time>
+        <span>
+          <a href={all.href}>{all.title}</a>
+        </span>
+      </li>
+      <li>
+        <span>{all.description}</span>
+      </li>
+    ))}
+  </ul>
 </main>
 </BaseLayout>
 <style>

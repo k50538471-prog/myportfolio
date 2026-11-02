@@ -86,9 +86,11 @@ const recent = [...articles]
   <ul class="all">
     {allart.map((all) => (
       <li>
+        <a href={all.href}>
         <time datetime={all.date}>{all.date}</time>
-        <span class="title"><a href={all.href}>{all.title}</a></span>
+        <span class="title">{all.title}</span>
         <span>{all.description}</span>
+        </a>
       </li>
     ))}
   </ul>

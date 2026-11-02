@@ -1,6 +1,6 @@
 ---
 title: "カーネルって？　シェルって？"
-description: "kernelとshellについて簡単に解説してみます．"
+description: "kernelとshellはどんな役割をしているのか"
 date: 2026-11-01
 topic: "コンピュータ"
 tags: ["OS", "シェル","kernel"]

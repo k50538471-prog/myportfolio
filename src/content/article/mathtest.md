@@ -1,8 +1,8 @@
 ---
-title: '数学系'
-description: '数学test'
-date: '2026-10-29'
+title: '線形代数-ベクトル空間'
+description: 'ベクトル空間と部分空間についてその定義と性質'
+date: '2026-11-2'
 topic: '数学'
 toc: true
-href: '/math/algebraII/9_29.astro'
+href: '../../../math/algebraII/9_29.astro'
 ---

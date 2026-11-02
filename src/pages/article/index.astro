@@ -86,7 +86,7 @@ const recent = [...articles]
   <ul class="all">
     {allart.map((all) => (
       <li>
-        <a href={all.href}>
+        <a class ="all-colum"href={all.href}>
         <time datetime={all.date}>{all.date}</time>
         <span class="title">{all.title}</span>
         <span>{all.description}</span>
@@ -159,33 +159,33 @@ const recent = [...articles]
     font-size: 0.85rem;
   }
 /*一時的*/
-.all {
-  margin: 0 0 72px;
-  padding: 0;
-  list-style: none;
-}
-.all li {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-  padding: 10px 0;
-  border-bottom: 1px solid var(--line);
-  flex-direction: column;
-}
-.all time {
-  flex: none;
-  width: 6.5rem;
-  color: var(--muted);
-  font-size: 0.85rem;
-}
-.all title{
-  font-size: 18px;
-}
-.all:hover .title,
-.all:focus-visible .title {
-  text-decoration: none;
-  color: #78a7b4;
-}
+                .all {
+                  margin: 0 0 72px;
+                  padding: 0;
+                  list-style: none;
+                }
+                .all-colum {
+                  display: flex;
+                  flex-wrap: wrap;
+                  gap: 16px;
+                  padding: 10px 0;
+                  border-bottom: 1px solid var(--line);
+                  flex-direction: column;
+                }
+                .all time {
+                  flex: none;
+                  width: 6.5rem;
+                  color: var(--muted);
+                  font-size: 0.85rem;
+                }
+                .all title{
+                  font-size: 18px;
+                }
+                .all:hover .title,
+                .all:focus-visible .title {
+                  text-decoration: none;
+                  color: #78a7b4;
+                }
 
   .topic {
     margin-left: 4px;

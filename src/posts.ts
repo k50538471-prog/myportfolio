@@ -42,6 +42,35 @@ export async function getRecentAll(n = 5) {
 }
 
 // n を省略すると article + blog の全件(新しい順)
+
+export async function getArticles(n?: number) {
+	const items = await getCollection('article');
+	const sorted = items
+		.map((a) => ({
+			title: a.data.title,
+			description: a.data.description,
+			date: a.data.date,
+			topic: a.data.topic,
+			tags: a.data.tags,
+			url: a.data.href ?? `/article/${a.id}/`,
+		}))
+		.sort(byDateDesc);
+	return n ? sorted.slice(0, n) : sorted;
+}
+
+export async function getBlogs(n?: number) {
+	const items = await getCollection('blog');
+	const sorted = items
+		.map((b) => ({
+			title: b.data.title,
+			description: b.data.description,
+			date: b.data.date,
+			url: `/blog/${b.id}/`,
+		}))
+		.sort(byDateDesc);
+	return n ? sorted.slice(0, n) : sorted;
+}
+
 export async function getAll(n?: number) {
 	const [a, b] = await Promise.all([getArticles(), getBlogs()]);
 	const merged = [

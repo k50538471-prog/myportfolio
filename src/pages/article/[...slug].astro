@@ -8,6 +8,11 @@ export async function getStaticPaths() {
   return entries.map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
 }
 const { entry } = Astro.props;
+
+if (entry.data.href) {
+  return Astro.redirect(entry.data.href);
+}
+
 const { Content, headings } = await render(entry);
 ---
 <Articlelayout

@@ -43,7 +43,7 @@ const allart = (await getAll()).map((all) => ({
  const entries = await getCollection("article");
  const articles = entries.map((e) => ({
    title: e.data.title,
-   href: `/article/${e.id}/`,
+   href:  e.data.href ?? `/article/${e.id}/`,
    date: e.data.date.toISOString().slice(0, 10),
    topic: e.data.topic,
  }));

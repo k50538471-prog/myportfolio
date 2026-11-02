@@ -83,15 +83,11 @@ const recent = [...articles]
 -->
     <p>記事一覧</p>
   <!--<p class="lead"></p> -->
-  <ul class="recent">
+  <ul class="all">
     {allart.map((all) => (
       <li>
         <time datetime={all.date}>{all.date}</time>
-        <span>
-          <a href={all.href}>{all.title}</a>
-        </span>
-      </li>
-      <li>
+        <span><a href={all.href}>{all.title}</a></span>
         <span>{all.description}</span>
       </li>
     ))}
@@ -160,6 +156,25 @@ const recent = [...articles]
     color: var(--muted);
     font-size: 0.85rem;
   }
+/*一時的*/
+.all {
+  margin: 0 0 72px;
+  padding: 0;
+  list-style: none;
+}
+.all li {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--line);
+}
+.all time {
+  flex: none;
+  width: 6.5rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
   .topic {
     margin-left: 4px;
     color: var(--muted);

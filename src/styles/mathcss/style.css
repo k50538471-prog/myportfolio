@@ -34,12 +34,27 @@ math.ltx_math_unparsed {
     overflow-x: auto;
 }
 
+@font-face {
+  font-family: "STIX Two Math";
+  src: url("/fonts/STIXTwoMath-Regular.woff2") format("woff2");
+}
+
+math .ltx_mathvariant_double-struck {
+  font-variant: normal;
+  font-style: normal;
+}
+
 @media (max-width: 680px) {
-    math.ltx_Math,
+    /*math.ltx_Math,
     math.ltx_math_unparsed {
         font-size: 1em;
     }
     body{
       font-size: 0.6em;
+    }*/
+    .ltx_equation,
+    .ltx_equationgroup {
+        max-width: 100%;
+        overflow-x: auto;
     }
 }

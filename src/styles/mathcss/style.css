@@ -50,15 +50,21 @@ math,
 }
 
 @media screen and (max-width: 680px) {
-  .ltx_para,
   .ltx_p {
-    max-width: 100%;
     overflow-x: auto;
     overflow-y: hidden;
+    max-width: 100%;
     -webkit-overflow-scrolling: touch;
   }
 
-  /* 別行立ての table (ex 1.12 の Ex3 や EGx1) */
+  math.ltx_Math,
+  math.ltx_math_unparsed {
+    display: inline-block;
+    max-width: 100%;
+    overflow-x: auto;
+    vertical-align: middle;
+  }
+
   table.ltx_equation,
   table.ltx_equationgroup,
   .ltx_eqn_table {

@@ -50,28 +50,20 @@ math,
 }
 
 @media screen and (max-width: 680px) {
-  /*math.ltx_Math,
-  math.ltx_math_unparsed {
-      font-size: 1em;
-  }
-  body{
-    font-size: 0.6em;
-  }*/
-  .ltx_equation,
-  .ltx_equationgroup {
+  .ltx_para,
+  .ltx_p {
     max-width: 100%;
     overflow-x: auto;
-    overflow-y: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
   }
-  math.ltx_Math,
-  math.ltx_math_unparsed {
+
+  /* 別行立ての table (ex 1.12 の Ex3 や EGx1) */
+  table.ltx_equation,
+  table.ltx_equationgroup,
+  .ltx_eqn_table {
+    display: block;
     max-width: 100%;
     overflow-x: auto;
-    overflow-y: none;
-  }
-  math.ltx_Math[display="block"] {
-  display: block;
-  overflow-x: auto;
-  max-width: 100%;
   }
 }

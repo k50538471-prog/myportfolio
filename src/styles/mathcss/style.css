@@ -49,17 +49,22 @@ math,
   font-family: "STIX Two Math", "Latin Modern Math", "Cambria Math", math;
 }
 
-@media (max-width: 680px) {
-    /*math.ltx_Math,
-    math.ltx_math_unparsed {
-        font-size: 1em;
-    }
-    body{
-      font-size: 0.6em;
-    }*/
-    .ltx_equation,
-    .ltx_equationgroup {
-        max-width: 100%;
-        overflow-x: auto;
-    }
+@media screen and (max-width: 680px) {
+  /*math.ltx_Math,
+  math.ltx_math_unparsed {
+      font-size: 1em;
+  }
+  body{
+    font-size: 0.6em;
+  }*/
+  .ltx_equation,
+  .ltx_equationgroup {
+      max-width: 100%;
+      overflow-x: auto;
+  }
+  math.ltx_Math,
+  math.ltx_math_unparsed {
+      max-width: 100%;
+      overflow-x: auto;
+  }
 }

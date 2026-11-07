@@ -185,7 +185,11 @@ const showToc = toc && tocItems.length > 0;
   /* コード(Shiki の出力 pre.astro-code にも効く) */
   .prose :global(pre) { margin: 0 0 24px; padding: 16px 14px; border-radius: 6px; font-size: 13px; line-height: 1.7; overflow-x: auto; background: var(--code-bg); color: #e6e6e0; }
   .prose :global(:not(pre) > code) { padding: 2px 6px; background: #efefea; border-radius: 4px; font-size: 0.9em; }
- 
+  .prose :global(pre),
+  .prose :global(code) {
+    font-family: ui-monospace, 'SFMono-Regular', Menlo, Consolas, 'Liberation Mono', monospace;
+  }
+
   /* 表: 狭い画面では横スクロール */
   .prose :global(table) { display: block; max-width: 100%; overflow-x: auto; margin: 0 0 24px; border-collapse: collapse; font-size: 14px; text-align: center; }
   .prose :global(th), .prose :global(td) { padding: 8px 12px; border: 1px solid var(--line); }

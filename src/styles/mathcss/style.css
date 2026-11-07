@@ -59,18 +59,19 @@ math,
   }*/
   .ltx_equation,
   .ltx_equationgroup {
-      display: block;
       max-width: 100%;
       overflow-x: auto;
       overflow-y: auto;
-      -webkit-overflow-scrolling: touch;
   }
   math.ltx_Math,
   math.ltx_math_unparsed {
-      display: block;
       max-width: 100%;
       overflow-x: auto;
       overflow-y: auto;
-      -webkit-overflow-scrolling: touch;
+  }
+  math.ltx_Math[display="block"] {
+  display: block;
+  overflow-x: auto;
+  max-width: 100%;
   }
 }

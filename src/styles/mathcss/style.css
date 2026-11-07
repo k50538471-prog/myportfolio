@@ -31,7 +31,6 @@ math.ltx_math_unparsed {
 .ltx_equation,
 .ltx_equationgroup {
     max-width: 100%;
-    overflow-x: auto;
 }
 
 @font-face {

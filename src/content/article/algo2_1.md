@@ -1,6 +1,6 @@
 ---
 title: "全探索について"
-description: "全探索の基本アルゴリズムについて"
+description: "全探索の基本である深さ優先探索と幅優先探索について"
 date: 2026-11-07
 topic: "アルゴリズム"
 tags: ["DFS","BFS"]

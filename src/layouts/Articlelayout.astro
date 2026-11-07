@@ -112,6 +112,18 @@ const showToc = toc && tocItems.length > 0;
     pre.replaceWith(wrap);
     wrap.append(bar, pre);
   });
+
+    document.querySelectorAll<HTMLAnchorElement>('.toc-side a, .toc-inline a').forEach((a) => {
+    a.addEventListener('click', (e) => {
+      const hash = a.getAttribute('href');
+      if (!hash || !hash.startsWith('#')) return;
+      const target = document.getElementById(decodeURIComponent(hash.slice(1)));
+      if (!target) return;
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth' });
+      history.replaceState(null, '', hash);
+    });
+  });
 </script>
 <style>
   :root {

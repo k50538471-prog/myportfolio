@@ -87,7 +87,32 @@ const showToc = toc && tocItems.length > 0;
     )}
   </div>
 </BaseLayout>
- 
+<script>
+  document.querySelectorAll<HTMLPreElement>('.prose pre').forEach((pre) => {
+    const wrap = document.createElement('div');
+    wrap.className = 'code-block';
+
+    const bar = document.createElement('div');
+    bar.className = 'code-bar';
+
+    const lang = document.createElement('span');
+    lang.textContent = pre.dataset.language ?? '';
+
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'code-copy';
+    btn.textContent = 'copy';
+    btn.addEventListener('click', async () => {
+      await navigator.clipboard.writeText(pre.textContent ?? '');
+      btn.textContent = 'copied';
+      setTimeout(() => (btn.textContent = 'copy'), 1500);
+    });
+
+    bar.append(lang, btn);
+    pre.replaceWith(wrap);
+    wrap.append(bar, pre);
+  });
+</script>
 <style>
   :root {
     --bg: #fbfbf9;
@@ -171,11 +196,14 @@ const showToc = toc && tocItems.length > 0;
   }
   .prose :global(.box > :first-child) { margin-top: 0; }
   .prose :global(.box > :last-child) { margin-bottom: 0; }
-  .prose :global(.box .box-title) {
+  .prose :global(.box h3) {
     display: block;
-    margin-bottom: 8px;
-    font-weight: 700;
+    margin-bottom: 4px;
+    font-weight: 500;
     color: var(--accent);
+  }
+  .prose :global(.box h3::after){
+    width: 0;
   }
   /* article: h2 は左線、blog: h2 は下線 */
   [data-variant='article'] .prose :global(h1), [data-variant='article'] .prose :global(h2) { padding-left: 12px; border-left: 4px solid var(--accent); }
@@ -189,7 +217,12 @@ const showToc = toc && tocItems.length > 0;
   .prose :global(code) {
     font-family: ui-monospace, 'SFMono-Regular', Menlo, Consolas, 'Liberation Mono', monospace;
   }
-
+  .prose :global(.code-block) { margin: 0 0 24px; border-radius: 6px; overflow: hidden; background: var(--code-bg); }
+  .prose :global(.code-bar) { display: flex; justify-content: space-between; align-items: center; padding: 4px 12px; font-size: 11px; color: #9a9a94; border-bottom: 1px solid #333840; }
+  .prose :global(.code-copy) { font: inherit; font-size: 11px; line-height: 1.4; color: inherit; background: none; border: 1px solid #4a4f57; border-radius: 3px; padding: 0 6px; cursor: pointer; }
+  .prose :global(.code-copy:hover) { color: #fff; border-color: #888; }
+  .prose :global(.code-block pre) { margin: 0; border-radius: 0; }
+ 
   /* 表: 狭い画面では横スクロール */
   .prose :global(table) { display: block; max-width: 100%; overflow-x: auto; margin: 0 0 24px; border-collapse: collapse; font-size: 14px; text-align: center; }
   .prose :global(th), .prose :global(td) { padding: 8px 12px; border: 1px solid var(--line); }

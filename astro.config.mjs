@@ -36,13 +36,22 @@ export default defineConfig({
 		},
 	],
 		markdown: {
-        remarkPlugins: [
-            remarkBreaks,
-			remarkMath,
-        ],
-        rehypePlugins: [
-            // ...
-			rehypeKatex,
-        ],
+			shikiConfig: {
+				transformers: [
+					{
+						pre(node) {
+						node.properties['data-language'] = this.options.lang;
+						},
+					},
+				],
+			},
+			remarkPlugins: [
+				remarkBreaks,
+				remarkMath,
+			],
+			rehypePlugins: [
+				// ...
+				rehypeKatex,
+			],
     }
 });

@@ -59,15 +59,15 @@ math,
   }*/
   .ltx_equation,
   .ltx_equationgroup {
-      max-width: 100%;
-      overflow-x: auto;
-      overflow-y: auto;
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: auto;
   }
   math.ltx_Math,
   math.ltx_math_unparsed {
-      max-width: 100%;
-      overflow-x: auto;
-      overflow-y: auto;
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: none;
   }
   math.ltx_Math[display="block"] {
   display: block;

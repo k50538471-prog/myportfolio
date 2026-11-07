@@ -44,6 +44,11 @@ math .ltx_mathvariant_double-struck {
   font-style: normal;
 }
 
+math,
+.ltx_Math {
+  font-family: "STIX Two Math", "Latin Modern Math", "Cambria Math", math;
+}
+
 @media (max-width: 680px) {
     /*math.ltx_Math,
     math.ltx_math_unparsed {

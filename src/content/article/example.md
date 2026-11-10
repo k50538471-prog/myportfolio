@@ -1,9 +1,9 @@
 ---
-title: "カーネルとシェルの入門"
-description: "OSの構成要素と，シェルの種類について"
+title: "サンプル記事"
+description: "mdの書き方とformatterの書き方をまとめています"
 date: 2026-11-01
 topic: "コンピュータ"
-tags: ["OS", "シェル", "入門"]
+tags: ["タグ1", "タグ2", "タグ3"]
 toc: true
 ---
 導入文をここに書く．

@@ -175,7 +175,7 @@ for(int i = 0; i < n; i++){
 漸化式について，
 $$
 \begin{align*}
-\displaystyle\underset{0 \leq k}{max}(dp[i][j - k\cdot w[i]] + k * v[i]) &= max(dp[i][j], \displaystyle\underset{1\leq k}{max}(dp[i][j - k * w[i]] + k * v[i]))(k' = k - 1と置けばk \geq 0で式変形していく)\\
+\displaystyle\underset{0 \leq k}{max}(dp[i][j - k\cdot w[i]] + k * v[i]) &= max(dp[i][j], \displaystyle\underset{1\leq k}{max}(dp[i][j - k * w[i]] + k * v[i]))(k' = k - 1と置いてk \geq 0で式変形していく)\\
 & = max(dp[i][j], \displaystyle\underset{0 \leq k}{max}(dp[i][(j - w[i]) - k * w[i]] + k * v[i]) + v[i])（\displaystyle\underset{0 \leq k}{max}について dpの定義において，dp[i + 1][j - w[i]]としたものに等しい．）\\
 & = max(dp[i][j], dp[i + 1][j - w[i]]+ v[i])
 \end{align*}

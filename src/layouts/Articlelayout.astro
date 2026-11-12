@@ -184,7 +184,7 @@ const showToc = toc && tocItems.length > 0;
   .toc-inline summary { cursor: pointer; font-weight: 600; }
  
   /* ---- 本文(mdから来る要素は :global で当てる) ---- */
-  .prose { font-size: 16px; line-height: 1.9; overflow-wrap: anywhere; }
+  .prose { font-size: 16px; line-height: 1.9; overflow-wrap: anywhere; max-width: 100vw; overflow-x: auto;  overflow-y: visible;}
   .prose :global(p) { margin: 0 0 20px; }
   .prose :global(h1) { margin: 56px 0 20px; font-size: 26px; line-height: 1.4; }
   .prose :global(h2) { margin: 48px 0 16px; font-size: 22px; line-height: 1.5; }

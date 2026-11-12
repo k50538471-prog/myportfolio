@@ -174,9 +174,9 @@ for(int i = 0; i < n; i++){
 ということで効率化できる部分について考えます．
 漸化式について，
 
-<div class = "math-hover">
-    <span>展開</span>
-    <div class = "math-hover-card">
+<div class = "hc-wrap">
+<span>
+
 $$
 \begin{align*}
 \displaystyle\underset{0 \leq k}{max}(dp[i][j - k\cdot w[i]] + k * v[i]) &= max(dp[i][j], \displaystyle\underset{1\leq k}{max}(dp[i][j - k * w[i]] + k * v[i]))(k' = k - 1と置いてk \geq 0で式変形していく)\\
@@ -184,7 +184,19 @@ $$
 & = max(dp[i][j], dp[i + 1][j - w[i]]+ v[i])
 \end{align*}
 $$
-    </div>
+
+</span>
+<div class = "hc" role = "tip">
+
+$$
+\begin{align*}
+\displaystyle\underset{0 \leq k}{max}(dp[i][j - k\cdot w[i]] + k * v[i]) &= max(dp[i][j], \displaystyle\underset{1\leq k}{max}(dp[i][j - k * w[i]] + k * v[i]))(k' = k - 1と置いてk \geq 0で式変形していく)\\
+& = max(dp[i][j], \displaystyle\underset{0 \leq k}{max}(dp[i][(j - w[i]) - k * w[i]] + k * v[i]) + v[i])（\displaystyle\underset{0 \leq k}{max}について dpの定義において，dp[i + 1][j - w[i]]としたものに等しい．）\\
+& = max(dp[i][j], dp[i + 1][j - w[i]]+ v[i])
+\end{align*}
+$$
+
+</div>
 </div>
 
 これで，変数を消去することができたため，2重ループにより表現可能になりました．ちなみに．計算量は$O(nW)$です．

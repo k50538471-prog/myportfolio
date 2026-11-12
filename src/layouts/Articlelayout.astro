@@ -218,9 +218,10 @@ const showToc = toc && tocItems.length > 0;
     width: 0;
   }
   /*Katexのcss */
-  /*.katex-display {
-    overflow-x: auto;
-  }*/
+  .katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+  }
   /* article: h2 は左線、blog: h2 は下線 */
   [data-variant='article'] .prose :global(h1), [data-variant='article'] .prose :global(h2) { padding-left: 12px; border-left: 4px solid var(--accent); }
   [data-variant='blog'] .prose { line-height: 2; }

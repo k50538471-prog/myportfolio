@@ -19,13 +19,10 @@ n個の商品があり，各商品iに対して重量$w_i$，価値$v_i$が定�
 </div>
 簡単な繰り返しで考えると商品を入れるか入れないかで分岐をする木構造のDFSが考えられます．しかし，この方法では最悪$O(2^n)$となり当然TLEです．このアルゴリズムの構造に注目すると，たびたび，すでに計算してある値を計算しなおしていることに気づくでしょうか．
 この再計算をなくす．つまり，計算結果を再利用することで効率化できます．
-メモテーブルは
 
 ```cpp
 #include <iostream>
 #include <vector>
-#include <pair>
-#include <cstring>
 using namespce std;
 
 int max_n = 100, max_W = 10000;
@@ -120,8 +117,7 @@ int n,m;
 cin >> n >> m;
 string s,t;
 cin >> s >> t;
-
-int dp[n][m];//dpテーブル
+vector<vector<int>> dp(n, vector<int>(m, -1));
 for(int i = 0; i < n; i++){
     for(int j = 0; j < m; j++){
         if(s[i] == t[j]){
@@ -181,13 +177,14 @@ $$
 
 ```cpp
 #include <iostream>
-#include <memset>
+#include <vector>
 using namespace std;
 
 int main(){
     int n;
     cin >> n;
-    int w[n],v[n];
+    vector<int> w(n);
+    vector<int> v(n);
     for(int i = 0; i < n; i++){
         cin >> w[i];
     }
@@ -196,14 +193,15 @@ int main(){
     }
     int W;
     cin >> W;
+    vector<vector<int>> dp(n, vector<int>(W, -1));
     for(int i = 0; i < n; i++){
-        for(int j = 0; j < W; j++){
+        for(int j = 0; j <= W; j++){
             if( j < w[i])dp[i + 1][j] = dp[i][j];
             else {
                 dp[i + 1][j] = max(dp[i][j], dp[i + 1][j - w[i]] + v[i]);
             }
         }
     }
+    cout << dp[n][W] << "\n";
 }
-cout << dp[n][W] << "\n";
 ```

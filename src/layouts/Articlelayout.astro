@@ -218,9 +218,16 @@ const showToc = toc && tocItems.length > 0;
     width: 0;
   }
   /* Katex*/
-  .katex-display > .katex{
-    overflow-x: auto;
-  }
+.katex-display {
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.katex-display > .katex {
+  display: inline-block;
+  white-space: nowrap;
+}
 
   /*数式 hovercard */
   .hc-wrap { position: relative; display: inline-block; }

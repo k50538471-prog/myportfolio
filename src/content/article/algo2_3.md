@@ -105,10 +105,108 @@ dp[i][j]をS[1]~S[i]とT[1]~T[j]のLCSの長さとして定義しましょう．
 $$
 dp[i + 1][j + 1] =
 \begin{cases}
-max(dp[i][j] + 1, dp[i][j + 1], dp[i + 1][j]) & (S[i + 1] = T[j + 1])\\
+dp[i][j] + 1 & (S[i + 1] = T[j + 1])\\
 max(dp[i][j + 1], dp[i + 1][j]) & (otherwise)
 \end{cases}
 $$
 
 という漸化式で表すことができる．
 この漸化式は$O(nm)$であり解はdp[n][m]となる
+
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main(){
+int n,m;
+cin >> n >> m;
+string s,t;
+cin >> s >> t;
+
+int dp[n][m];//dpテーブル
+for(int i = 0; i < n; i++){
+    for(int j = 0; j < m; j++){
+        if(s[i] == t[j]){
+            dp[i + 1][j + 1] = dp[i][j] + 1;
+        }
+        else{
+            dp[i + 1][j + 1] = max(dp[i + 1][j], dp[i][j + 1]);
+        }
+    }
+}
+cout << dp[n][m] << "\n";
+return 0;
+}
+```
+
+基本的に漸化式に従って2重ループを作るだけでよいので簡単ですね．
+次は少し問題設定が難しいものを扱ってみましょう
+<div class = "box">
+
+### ナップサック問題(個数制限なし)
+n個の商品のうち，各商品iについてその重量を$w_i$，価値を$v_i$とする．これらの商品から，総重量が$W$を超えないように商品を選ぶときの総価値の最大値を求めよ．ただし，同じ種類の商品をいくつでも選択してよいとする．
+制約：$1 \leq w_i, v_i \leq 100, ~ 1 \leq W \leq 10^4$
+
+</div>
+
+今回は重複を含めて選ぶことができます．しかし，やることは同じでとりあえず漸化式を考えることにします．
+まず，dp[i + 1][j]をi番目までの商品から総重量がj以下となるように選んだ時の総価値の最大値とします．
+すると漸化式は
+$$
+dp[0][j] = 0\\
+dp[i + 1][j] = \displaystyle\underset{0 \leq k}{max}(dp[i][j - k\cdot w[i]] + v[i]) (k:商品iを買う個数)
+$$
+として表せます．
+この漸化式通りに愚直にコードを書くと次のようになります．
+(メタ的ですがどうせ改良するので適当に書きます)
+```cpp
+int dp[n][W];
+for(int i = 0; i < n; i++){
+    for(int j = 0; j < W; j++){
+        for(int k = 0; k * w[i] <= j; k++){//j - k * w[i] >= 0が必要十分なため
+            dp[i + 1][j] = max(dp[i + 1][j], dp[i][j - k * w[i]] + k * v[i])
+        }
+    }
+}
+```
+しかしこれだと3重ループになり，計算量は$O(n^3)で終わっている(ほぼ確実にTLE)なので改良が必要です．
+ということで効率化できる部分について考えます．
+漸化式について，
+$$
+\begin{align*}
+\displaystyle\underset{0 \leq k}{max}(dp[i][j - k\cdot w[i]] + k * v[i]) &= max(dp[i][j], \displaystyle\underset{1\leq k}{max}(dp[i][j - k * w[i]] + k * v[i]))(k' = k - 1と置けばk \geq 0で式変形していく)\\
+& = max(dp[i][j], \displaystyle\underset{0 \leq k}{max}(dp[i][(j - w[i]) - k * w[i]] + k * v[i]) + v[i])（\displaystyle\underset{0 \leq k}{max}について dpの定義において，dp[i + 1][j - w[i]]としたものに等しい．）\\
+& = max(dp[i][j], dp[i + 1][j - w[i]]+ v[i])
+\end{align*}
+$$
+これで，変数を消去することができたため，2重ループにより表現可能になりました．．ちなみに．計算量は$O(nW)$です．
+
+```cpp
+#include <iostream>
+#include <memset>
+using namespace std;
+
+int main(){
+    int n;
+    cin >> n;
+    int w[n],v[n];
+    for(int i = 0; i < n; i++){
+        cin >> w[i];
+    }
+    for(int i = 0; i < n; i++){
+    cin >> v[i];
+    }
+    int W;
+    cin >> W;
+    for(int i = 0; i < n; i++){
+        for(int j = 0; j < W; j++){
+            if( j < w[i])dp[i + 1][j] = dp[i][j];
+            else {
+                dp[i + 1][j] = max(dp[i][j], dp[i + 1][j - w[i]] + v[i]);
+            }
+        }
+    }
+}
+cout << dp[n][W] << "\n";
+```

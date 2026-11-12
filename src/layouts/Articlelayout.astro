@@ -217,11 +217,40 @@ const showToc = toc && tocItems.length > 0;
   .prose :global(.box h3::after){
     width: 0;
   }
-  /*Katexのcss */
-  .katex-display {
-  overflow-x: auto;
-  overflow-y: hidden;
+  /* Katex*/
+  .katex-html{
+    overflow-x: auto;
   }
+
+  /*数式 hovercard */
+    .math-hover {
+    position: relative;
+    display: inline-block;
+  }
+
+  .math-hover-card {
+    display: none;
+    position: absolute;
+    z-index: 1000;
+
+    top: 100%;
+    left: 0;
+
+    width: max-content;
+    max-width: 90vw;
+    overflow-x: auto;
+
+    padding: 16px;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px #0002;
+  }
+
+  .math-hover:hover .math-hover-card {
+    display: block;
+  }
+  
   /* article: h2 は左線、blog: h2 は下線 */
   [data-variant='article'] .prose :global(h1), [data-variant='article'] .prose :global(h2) { padding-left: 12px; border-left: 4px solid var(--accent); }
   [data-variant='blog'] .prose { line-height: 2; }
